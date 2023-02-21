@@ -1,0 +1,450 @@
+{
+  "sections": {
+    "7cb3850e-5d27-4aa2-8243-e1408f5c9b1a": {
+      "type": "index__slideshow-classic",
+      "blocks": {
+        "template--16702279483643__7cb3850e-5d27-4aa2-8243-e1408f5c9b1a-1677001615a8ed703b-1": {
+          "type": "image",
+          "settings": {
+            "link": "https:\/\/www.instagram.com\/golf_vault\/?hl=en",
+            "image": "shopify:\/\/shop_images\/Untitled_design_8.png",
+            "mobile_image": "shopify:\/\/shop_images\/Untitled_design_9.png",
+            "pretext": "",
+            "title": "Follow us on Instagram @golf_vault",
+            "subtitle": "<p>Be the first to know about contests & giveaways!<\/p>",
+            "pretext_color": "#000000",
+            "heading_color": "#000000",
+            "subheading_color": "#000000",
+            "text_alignment": "center",
+            "text_horizontal_position": "center",
+            "background_color": "#ffffff",
+            "background_opacity": 77,
+            "border_color": "#ffffff",
+            "border_width": 0,
+            "text_width": 40,
+            "button_1": "Follow",
+            "button_1_link": "https:\/\/www.instagram.com\/golf_vault\/?hl=en",
+            "button_1_style": "button--primary",
+            "button_2": "",
+            "button_2_link": "",
+            "button_2_style": "button--secondary",
+            "pretext_color_mobile": "rgba(0,0,0,0)",
+            "heading_color_mobile": "rgba(0,0,0,0)",
+            "subheading_color_mobile": "rgba(0,0,0,0)"
+          }
+        },
+        "48b4ec68-f028-4fb8-9b26-02b52a0b9d2f": {
+          "type": "image",
+          "settings": {
+            "link": "https:\/\/golfvault.com\/pages\/the-winner-gets-a-custom-fitted-complete-cobra-aerojet-2023-set-bag-fitting-worth-5-000",
+            "image": "shopify:\/\/shop_images\/Untitled_design_2_81b1f47e-4c70-49aa-b2ae-bd1b4b11f060.png",
+            "mobile_image": "shopify:\/\/shop_images\/Copy_of_Untitled_Design.png",
+            "pretext": "",
+            "title": "Win a Custom Fitted Complete Cobra Aerojet 2023 Set, Bag & Fitting Worth $5,000",
+            "subtitle": "<p>Contest ends March 31st<\/p>",
+            "pretext_color": "#000000",
+            "heading_color": "#000000",
+            "subheading_color": "#000000",
+            "text_alignment": "center",
+            "text_horizontal_position": "center",
+            "background_color": "#ffffff",
+            "background_opacity": 86,
+            "border_color": "#ffffff",
+            "border_width": 0,
+            "text_width": 40,
+            "button_1": "Enter Here",
+            "button_1_link": "https:\/\/golfvault.com\/pages\/the-winner-gets-a-custom-fitted-complete-cobra-aerojet-2023-set-bag-fitting-worth-5-000",
+            "button_1_style": "button--primary",
+            "button_2": "",
+            "button_2_link": "",
+            "button_2_style": "button--secondary",
+            "pretext_color_mobile": "rgba(0,0,0,0)",
+            "heading_color_mobile": "rgba(0,0,0,0)",
+            "subheading_color_mobile": "rgba(0,0,0,0)"
+          }
+        },
+        "393f9450-6069-4242-9d1b-6e04fa6318fe": {
+          "type": "image",
+          "settings": {
+            "link": "https:\/\/golfvault.com\/search?q=22dsale",
+            "image": "shopify:\/\/shop_images\/Untitled_design_10_d61af7c8-ddd5-41e4-9583-7b3f4815d358.png",
+            "mobile_image": "shopify:\/\/shop_images\/Untitled_design_4_f043793f-4d97-4666-b939-fb0974bf5b66.png",
+            "pretext": "",
+            "title": "ALL 2022 Demo Drivers - $499 or Less!",
+            "subtitle": "<p>Demo Fairway Woods - $299 or Less!<\/p>",
+            "pretext_color": "#000000",
+            "heading_color": "#000000",
+            "subheading_color": "#000000",
+            "text_alignment": "center",
+            "text_horizontal_position": "center",
+            "background_color": "#ffffff",
+            "background_opacity": 88,
+            "border_color": "#ffffff",
+            "border_width": 0,
+            "text_width": 40,
+            "button_1": "Shop now",
+            "button_1_link": "https:\/\/golfvault.com\/search?q=22dsale",
+            "button_1_style": "button--primary",
+            "button_2": "",
+            "button_2_link": "",
+            "button_2_style": "button--secondary",
+            "pretext_color_mobile": "rgba(0,0,0,0)",
+            "heading_color_mobile": "rgba(0,0,0,0)",
+            "subheading_color_mobile": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "template--16702279483643__7cb3850e-5d27-4aa2-8243-e1408f5c9b1a-1677001615a8ed703b-1",
+        "48b4ec68-f028-4fb8-9b26-02b52a0b9d2f",
+        "393f9450-6069-4242-9d1b-6e04fa6318fe"
+      ],
+      "settings": {
+        "image_transition": "slide",
+        "image_slideshow_speed": 8,
+        "show_arrows": true,
+        "show_nav_buttons": true,
+        "mobile_text_below_image": false,
+        "width": "wide",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "840ef956-5b07-4bdf-8260-524ce13bce73": {
+      "type": "index__collection-list",
+      "blocks": {
+        "template--16702279483643__840ef956-5b07-4bdf-8260-524ce13bce73-1677001676d24cb3ac-0": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "",
+            "title": "",
+            "button_label": "View products"
+          }
+        },
+        "template--16702279483643__840ef956-5b07-4bdf-8260-524ce13bce73-1677001676d24cb3ac-1": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "",
+            "title": "",
+            "button_label": "View products"
+          }
+        },
+        "template--16702279483643__840ef956-5b07-4bdf-8260-524ce13bce73-1677001676d24cb3ac-2": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "",
+            "title": "",
+            "button_label": "View products"
+          }
+        },
+        "3e97b79e-f995-4493-b0ce-be0e95141e64": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "",
+            "title": "",
+            "button_label": "View products"
+          }
+        }
+      },
+      "block_order": [
+        "template--16702279483643__840ef956-5b07-4bdf-8260-524ce13bce73-1677001676d24cb3ac-0",
+        "template--16702279483643__840ef956-5b07-4bdf-8260-524ce13bce73-1677001676d24cb3ac-1",
+        "template--16702279483643__840ef956-5b07-4bdf-8260-524ce13bce73-1677001676d24cb3ac-2",
+        "3e97b79e-f995-4493-b0ce-be0e95141e64"
+      ],
+      "settings": {
+        "collections_per_row": 4,
+        "align_height": true,
+        "collection_height": 400,
+        "enable_zoom": true,
+        "button_style": "button--primary",
+        "overlay_background": "#cccccc",
+        "overlay_background_opacity": 20,
+        "overlay_text": "#ffffff",
+        "collection_title_below_image": true,
+        "width": "wide",
+        "show_gutter": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "ceda90ec-c129-4b1a-ae4e-d2fd06acb271": {
+      "type": "index__featured-collection",
+      "settings": {
+        "title": "Featured collection",
+        "collection": "",
+        "products_per": 5,
+        "mobile_products_per_row": "2",
+        "products_limit": 10,
+        "align_height": false,
+        "collection_height": 170,
+        "collection_style": "slider",
+        "width": "wide",
+        "show_gutter": true,
+        "padding_top": 17,
+        "padding_bottom": 0,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "144496ac-e53d-40e2-b050-804d451dc696": {
+      "type": "index__heading",
+      "settings": {
+        "preheading": "<p>Add a preheading<\/p>",
+        "title": "Section heading",
+        "subheading": "<p>Additional text or description of section<\/p>",
+        "preheading_color": "rgba(0,0,0,0)",
+        "heading_color": "rgba(0,0,0,0)",
+        "subheading_color": "rgba(0,0,0,0)",
+        "background": "rgba(0,0,0,0)",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 0,
+        "heading_alignment": "center",
+        "vertical_spacing": "medium",
+        "width": "standard",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "39cd06cf-3d6e-4e7b-b3b7-0080a741aa88": {
+      "type": "index__featured-promotions",
+      "blocks": {
+        "template--16702279483643__39cd06cf-3d6e-4e7b-b3b7-0080a741aa88-167700183058d4a45d-0": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "overlay_background": "rgba(0,0,0,0)",
+            "overlay_background_opacity": 70,
+            "overlay_text": "rgba(0,0,0,0)",
+            "icon_label": "truck",
+            "title": "Special deal",
+            "text": "<p>Promotion description details.<\/p>"
+          }
+        },
+        "template--16702279483643__39cd06cf-3d6e-4e7b-b3b7-0080a741aa88-167700183058d4a45d-1": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "overlay_background": "rgba(0,0,0,0)",
+            "overlay_background_opacity": 70,
+            "overlay_text": "rgba(0,0,0,0)",
+            "icon_label": "bag",
+            "title": "Special deal",
+            "text": "<p>Promotion description details.<\/p>"
+          }
+        },
+        "template--16702279483643__39cd06cf-3d6e-4e7b-b3b7-0080a741aa88-167700183058d4a45d-2": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "overlay_background": "rgba(0,0,0,0)",
+            "overlay_background_opacity": 70,
+            "overlay_text": "rgba(0,0,0,0)",
+            "icon_label": "tag",
+            "title": "Special deal",
+            "text": "<p>Promotion description details.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16702279483643__39cd06cf-3d6e-4e7b-b3b7-0080a741aa88-167700183058d4a45d-0",
+        "template--16702279483643__39cd06cf-3d6e-4e7b-b3b7-0080a741aa88-167700183058d4a45d-1",
+        "template--16702279483643__39cd06cf-3d6e-4e7b-b3b7-0080a741aa88-167700183058d4a45d-2"
+      ],
+      "settings": {
+        "border_radius": 0,
+        "crop_images": true,
+        "overlay_background": "#939393",
+        "overlay_background_opacity": 70,
+        "overlay_text": "#ffffff",
+        "show_border": true,
+        "width": "wide",
+        "show_gutter": true,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "78e0ba3c-3096-4255-8466-5d430e06ea09": {
+      "type": "index__image-with-text",
+      "blocks": {
+        "template--16702279483643__78e0ba3c-3096-4255-8466-5d430e06ea09-16770019073102d816-2": {
+          "type": "text",
+          "settings": {
+            "title": "Heading text here",
+            "heading_size": "regular",
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "button_label": "View all",
+            "link": "",
+            "button_style": "button--primary",
+            "background": "rgba(0,0,0,0)",
+            "text_color": "rgba(0,0,0,0)",
+            "alignment": "left",
+            "vertical_position": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--16702279483643__78e0ba3c-3096-4255-8466-5d430e06ea09-16770019073102d816-2"
+      ],
+      "settings": {
+        "width": "standard",
+        "show_gutter": true,
+        "padding_top": 20,
+        "padding_bottom": 80,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "1ba323ca-c9c9-4529-8c4b-e619700a1d91": {
+      "type": "index__newsletter",
+      "settings": {
+        "display_first_name": false,
+        "display_last_name": false,
+        "newsletter_title": "Subscribe",
+        "newsletter_richtext": "<p>Sign up to get the latest on sales, new releases and more …<\/p>",
+        "newsletter_section_text_align": "center",
+        "background_color": "#a0cc4a",
+        "text_color": "#ffffff",
+        "image_darken": true,
+        "image_position": "left",
+        "width": "wide",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "6266bb58-0bfd-4bce-9671-e5922940eda5": {
+      "type": "index__heading",
+      "settings": {
+        "preheading": "<p>Add a preheading<\/p>",
+        "title": "Section heading",
+        "subheading": "<p>Additional text or description of section<\/p>",
+        "preheading_color": "rgba(0,0,0,0)",
+        "heading_color": "rgba(0,0,0,0)",
+        "subheading_color": "rgba(0,0,0,0)",
+        "background": "rgba(0,0,0,0)",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 0,
+        "heading_alignment": "center",
+        "vertical_spacing": "medium",
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "45f69b0e-4795-4a8f-8f8b-c8d8238e220b": {
+      "type": "index__logo-list",
+      "blocks": {
+        "template--16702279483643__45f69b0e-4795-4a8f-8f8b-c8d8238e220b-1677002054d84a46d8-0": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "template--16702279483643__45f69b0e-4795-4a8f-8f8b-c8d8238e220b-1677002054d84a46d8-1": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "template--16702279483643__45f69b0e-4795-4a8f-8f8b-c8d8238e220b-1677002054d84a46d8-2": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "template--16702279483643__45f69b0e-4795-4a8f-8f8b-c8d8238e220b-1677002054d84a46d8-3": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "template--16702279483643__45f69b0e-4795-4a8f-8f8b-c8d8238e220b-1677002054d84a46d8-4": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "c9e89414-59e4-4b02-8109-4caf224ff25b": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "7fc68ed0-ca0c-4b3b-91c1-17725288e8fc": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "c1ca1f5a-adc6-4bb7-bb6e-9bc3b01bb3ba": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16702279483643__45f69b0e-4795-4a8f-8f8b-c8d8238e220b-1677002054d84a46d8-0",
+        "template--16702279483643__45f69b0e-4795-4a8f-8f8b-c8d8238e220b-1677002054d84a46d8-1",
+        "template--16702279483643__45f69b0e-4795-4a8f-8f8b-c8d8238e220b-1677002054d84a46d8-2",
+        "template--16702279483643__45f69b0e-4795-4a8f-8f8b-c8d8238e220b-1677002054d84a46d8-3",
+        "template--16702279483643__45f69b0e-4795-4a8f-8f8b-c8d8238e220b-1677002054d84a46d8-4",
+        "c9e89414-59e4-4b02-8109-4caf224ff25b",
+        "7fc68ed0-ca0c-4b3b-91c1-17725288e8fc",
+        "c1ca1f5a-adc6-4bb7-bb6e-9bc3b01bb3ba"
+      ],
+      "settings": {
+        "logos_per_row": 8,
+        "logo_size": "large",
+        "background": "rgba(0,0,0,0)",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 0,
+        "width": "wide",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "7cb3850e-5d27-4aa2-8243-e1408f5c9b1a",
+    "840ef956-5b07-4bdf-8260-524ce13bce73",
+    "ceda90ec-c129-4b1a-ae4e-d2fd06acb271",
+    "144496ac-e53d-40e2-b050-804d451dc696",
+    "39cd06cf-3d6e-4e7b-b3b7-0080a741aa88",
+    "78e0ba3c-3096-4255-8466-5d430e06ea09",
+    "1ba323ca-c9c9-4529-8c4b-e619700a1d91",
+    "6266bb58-0bfd-4bce-9671-e5922940eda5",
+    "45f69b0e-4795-4a8f-8f8b-c8d8238e220b"
+  ]
+}
