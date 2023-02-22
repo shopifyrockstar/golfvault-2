@@ -13443,3 +13443,17 @@
   .swatch_options.collection_swatches {
     display: none !important; }
   
+
+
+
+
+
+  /* custom style */
+.custom-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.product__information .title, .product__information .subtitle{
+  margin-bottom: 1.5rem;
+}
