@@ -9,7 +9,7 @@ link_setting: <string>
 
 <div class="mega-menu__linklist {{ linklist_class }}">
   {% assign menu = linklists[menu_link] %}
-  <p class="menu__heading">
+  <p class="menu__heading {% if link_setting == blank %}custom-hidden{% endif %}">
     {% if link_setting != blank %}<a href="{{ link_setting }}">{% endif %}
       {{ menu.title }}
     {% if link_setting != blank %}</a>{% endif %}

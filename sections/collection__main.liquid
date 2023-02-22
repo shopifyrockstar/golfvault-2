@@ -254,7 +254,7 @@
         </div>
       {% else %}
         <div class="collection-matrix__wrapper">
-          <div class="collection__loading-icon button is-loading is-loading--icon-only"></div>
+          {% comment %} <div class="collection__loading-icon button is-loading is-loading--icon-only"></div> {% endcomment %}
           <div class="container collection-matrix" {% if section.settings.pagination_type != 'basic_pagination' %}data-load-more--grid {% endif %}>
             {%- assign products_per_row = section.settings.products_per_row -%}
             {%- assign mobile_products_per_row = section.settings.mobile_products_per_row -%}

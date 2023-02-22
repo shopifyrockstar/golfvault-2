@@ -1050,49 +1050,49 @@
         "type": "checkbox",
         "id": "mega_menu_2",
         "label": "Enable mega menu 2",
-        "default": false
+        "default": true
       },
       {
         "type": "checkbox",
         "id": "mega_menu_3",
         "label": "Enable mega menu 3",
-        "default": false
+        "default": true
       },
       {
         "type": "checkbox",
         "id": "mega_menu_4",
         "label": "Enable mega menu 4",
-        "default": false
+        "default": true
       },
       {
         "type": "checkbox",
         "id": "mega_menu_5",
         "label": "Enable mega menu 5",
-        "default": false
+        "default": true
       },
       {
         "type": "checkbox",
         "id": "mega_menu_6",
         "label": "Enable mega menu 6",
-        "default": false
+        "default": true
       },
       {
         "type": "checkbox",
         "id": "mega_menu_7",
         "label": "Enable mega menu 7",
-        "default": false
+        "default": true
       },
       {
         "type": "checkbox",
         "id": "mega_menu_8",
         "label": "Enable mega menu 8",
-        "default": false
+        "default": true
       },
       {
         "type": "checkbox",
         "id": "mega_menu_9",
         "label": "Enable mega menu 9",
-        "default": false
+        "default": true
       },
       {
         "type": "checkbox",
