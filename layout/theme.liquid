@@ -63,6 +63,7 @@
   <!-- CSS for Flex -->
   <link rel="stylesheet" href="{{ 'fancybox.css' | asset_url }}">
   <link rel="stylesheet" href="{{ 'styles.css' | asset_url }}">
+  <link rel="stylesheet" href="{{ 'custom.css' | asset_url }}">
 
   {% comment %}Inject theme-object begin{% endcomment %}
   <script>
@@ -150,6 +151,7 @@
     {{ "shopify_common.js" | shopify_asset_url | script_tag }}
     {{ "customer_area.js"  | shopify_asset_url | script_tag }}
   {% endif %}
+  {% include 'judgeme_core' %}
 </head>
 
 {%- capture money_format_output -%}
@@ -331,6 +333,7 @@
   {% render 'mobile-search' %}
 
   {% render 'structured-data' %}
+  {% include 'mlveda-currencies-switcher' %}{% include 'mlveda-currencies' %}{% include 'mlveda-flag' %}{% include 'mlveda-currencies-style' %}
 </body>
 </html>
 {% endcapture %}
