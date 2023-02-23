@@ -22,7 +22,7 @@
     "collection_swatches": false,
     "display_product_quantity": true,
     "product_form_style": "radio",
-    "enable_swatches": true,
+    "enable_swatches": false,
     "notify_me_form": false,
     "enable_quickshop": false,
     "cart_action": "reload_page",
@@ -797,6 +797,24 @@
         "type": "shopify:\/\/apps\/mlv-auto-currency-switcher\/blocks\/mlveda-currencies-head\/92ab730f-097e-4571-b27c-3f449e098ca3",
         "disabled": true,
         "settings": {
+        }
+      },
+      "855628211100114053": {
+        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "2950567246721570496": {
+        "type": "shopify:\/\/apps\/tabs-studio\/blocks\/global_embed_block\/19980fb9-f2ca-4ada-ad36-c0364c3318b8",
+        "disabled": false,
+        "settings": {
+          "init_type": "fallback",
+          "init_selector": "",
+          "replace_contents": false,
+          "init_timing": "immediate",
+          "custom_script": "",
+          "custom_style": ""
         }
       }
     }
