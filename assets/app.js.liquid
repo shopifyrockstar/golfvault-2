@@ -4052,3 +4052,380 @@ if (window.PXUTheme.theme_settings.icon_style == 'icon_solid') {
 
 /******/ })()
 ;
+
+
+
+$(document).on('change', '.aldila-selector', function(){
+  $('.additional-swatch-selector').removeClass('show');
+  $('.aldila-swatch-selector').addClass('show');
+  $('.aldila-swatch-selector').find('.spb-productoptionswatchwrapper').removeClass('active');
+  var selected_brand = $('.aldila-selector option:selected').val();
+  if ( selected_brand == 'ROGUE Black 95 MSI 70' || selected_brand == 'ROGUE Silver 110 MSI 70' || selected_brand == 'ASCENT Ultralight 40' ){
+    $('.aldila-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'Regular' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand.indexOf('TOUR Blue 75') != -1 || selected_brand == 'ASCENT Ultralight 40' ){
+    $('.aldila-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'Stiff' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'TOUR Green 75' ){
+    $('.aldila-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'X-Stiff' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'ASCENT Ultralight 35' ){
+    $('.aldila-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'Ladies' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'ASCENT Ultralight 40' ){
+    $('.aldila-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'R2' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  $('.aldila-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+    if ( $(this).hasClass('active') ){
+      $(this).find('input').prop("checked", true);
+      return false;
+    }
+  })
+})
+
+
+$(document).on('change', '.dumina-selector', function(){
+  $('.additional-swatch-selector').removeClass('show');
+  $('.dumina-swatch-selector').addClass('show');
+  $('.dumina-swatch-selector').find('.spb-productoptionswatchwrapper').removeClass('active');
+  var selected_brand = $('.dumina-selector option:selected').val();
+  $('.dumina-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){    
+    $(this).addClass('active');    
+  }) 
+  $('.dumina-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+    if ( $(this).hasClass('active') ){
+      $(this).find('input').prop("checked", true);
+      return false;
+    }
+  })
+})
+
+
+
+$(document).on('change', '.fujikura-selector', function(){
+  $('.additional-swatch-selector').removeClass('show');
+  $('.fujikura-swatch-selector').addClass('show');
+  $('.fujikura-swatch-selector').find('.spb-productoptionswatchwrapper').removeClass('active');
+  var selected_brand = $('.fujikura-selector option:selected').val();
+  if ( selected_brand == 'Ventus TR VeloCore Blue 6 (Exotic)' || selected_brand == 'Ventus TR VeloCore Blue 7 (Exotic)' || selected_brand == 'Ventus VeloCore Blue 6'
+     || selected_brand == 'Ventus VeloCore Blue 7' || selected_brand == 'Ventus VeloCore Black 6' || selected_brand == 'Ventus VeloCore Black 7' || selected_brand == 'Ventus VeloCore Red 6'
+     || selected_brand == 'Ventus VeloCore Red 7' || selected_brand == 'Atmos Tour Spec Black 6' || selected_brand == 'Atmos Tour Spec Black 7' || selected_brand == 'Speeder Pro 84 Tour Spec'
+     ){
+    $('.fujikura-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'Stiff' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  $('.fujikura-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+    if ( $(this).hasClass('active') ){
+      $(this).find('input').prop("checked", true);
+      return false;
+    }
+  })
+})
+
+
+$(document).on('change', '.graphite-design-selector', function(){
+  $('.additional-swatch-selector').removeClass('show');
+  $('.graphite-design-swatch-selector').addClass('show');
+  $('.graphite-design-swatch-selector').find('.spb-productoptionswatchwrapper').removeClass('active');
+  var selected_brand = $('.graphite-design-selector option:selected').val();
+  if ( selected_brand == 'Tour AD DI-5' || selected_brand == 'Tour Ad IZ-5' ){
+    $('.graphite-design-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'Stiff' || $(this).find('input').val() == 'R1' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'Tour AD DI-6' || selected_brand == 'Tour AD DI-7' || selected_brand == 'Tour AD DI-8' || selected_brand == 'Tour AD UB 6' || selected_brand == 'Tour AD UB 7' ||
+       selected_brand == 'Tour Ad IZ-7' || selected_brand == 'Tour Ad IZ-8' || selected_brand == 'Tour AD XC-6' || selected_brand == 'Tour AD XC-7' || selected_brand == 'Tour AD XC-8'
+     ){
+    $('.graphite-design-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'Stiff' || $(this).find('input').val() == 'X-Stiff' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'Tour AD UB 5' ){
+    $('.graphite-design-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'Stiff' || $(this).find('input').val() == 'X-Stiff' || $(this).find('input').val() == 'R2' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'Tour AD UB 8' || selected_brand == 'Tour AD BB-5' || selected_brand == 'Tour AD MJ-6' || selected_brand == 'Tour AD DI-6 Black ' ){
+    $('.graphite-design-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'Stiff' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'Tour Ad IZ-6' ){
+    $('.graphite-design-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'Stiff' || $(this).find('input').val() == 'S/R' || $(this).find('input').val() == 'X-Stiff' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'Tour AD XC-5' ){
+    $('.graphite-design-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'Stiff' || $(this).find('input').val() == 'Regular' || $(this).find('input').val() == 'X-Stiff' ){
+        $(this).addClass('active');
+      }
+    })
+  }  
+  if ( selected_brand == 'Tour AD GP-6' ){
+    $('.graphite-design-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'X-Stiff' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'Tour AD MJ-5' ){
+    $('.graphite-design-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'R100' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  $('.graphite-design-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+    if ( $(this).hasClass('active') ){
+      $(this).find('input').prop("checked", true);
+      return false;
+    }
+  })
+})
+
+
+$(document).on('change', '.mitsubishi-selector', function(){
+  $('.additional-swatch-selector').removeClass('show');
+  $('.mitsubishi-swatch-selector').addClass('show');
+  $('.mitsubishi-swatch-selector').find('.spb-productoptionswatchwrapper').removeClass('active');
+  var selected_brand = $('.mitsubishi-selector option:selected').val();
+  if ( selected_brand == 'Tensei 1K Black 65' || selected_brand == 'Tensei 1K Black 75' || selected_brand == 'Tensei 1K Black 85' ){
+    $('.mitsubishi-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'Stiff' || $(this).find('input').val() == 'Stiff' || $(this).find('input').val() == 'Tour X' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'Tensei AV Blue with Xlink Tech 55' || selected_brand == 'KURO KAGE Black DC 5G SFW 50' || selected_brand == 'KURO KAGE Black DC 5G 55' ){
+    $('.mitsubishi-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'R2' || $(this).find('input').val() == 'Regular' || $(this).find('input').val() == 'Stiff' || $(this).find('input').val() == 'X-Stiff' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'Tensei AV Blue with Xlink Tech 65' || selected_brand == 'Tensei AV Blue with Xlink Tech 75' ){
+    $('.mitsubishi-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'Tour X' || $(this).find('input').val() == 'Regular' || $(this).find('input').val() == 'Stiff' || $(this).find('input').val() == 'X-Stiff' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'Tensei AV RAW Blue SFW 55' ){
+    $('.mitsubishi-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'Lite' || $(this).find('input').val() == 'Regular' || $(this).find('input').val() == 'Stiff' || $(this).find('input').val() == 'X-Stiff' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'Tensei AV RAW White 65' || selected_brand == 'Tensei AV RAW White 75' || selected_brand == 'Tensei AV RAW White 85' ){
+    $('.mitsubishi-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if (  $(this).find('input').val() == 'Stiff' || $(this).find('input').val() == 'X-Stiff' || $(this).find('input').val() == 'Tour X 2.0' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'Fubuki NV 39' || selected_brand == 'KURO KAGE Black Dual-Core SFW 40' ){
+    $('.mitsubishi-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if (  $(this).find('input').val() == 'Ladies' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'Fubuki NV 45' ){
+    $('.mitsubishi-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if (  $(this).find('input').val() == 'Regular' || $(this).find('input').val() == 'Stiff' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'KURO KAGE Black Dual-Core SFW 50' ){
+    $('.mitsubishi-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if (  $(this).find('input').val() == 'Ladies' || $(this).find('input').val() == 'Action' || $(this).find('input').val() == 'Regular' || $(this).find('input').val() == 'Stiff' || $(this).find('input').val() == 'X-Stiff' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'KURO KAGE Black Dual-Core 55' ){
+    $('.mitsubishi-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if (  $(this).find('input').val() == 'Action' || $(this).find('input').val() == 'Regular' || $(this).find('input').val() == 'Stiff' || $(this).find('input').val() == 'X-Stiff' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  //should confirm
+  if ( selected_brand == 'KURO KAGE Limited TiNi 50' ){
+    $('.mitsubishi-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if (  $(this).find('input').val() == 'Stiff' || $(this).find('input').val() == 'Regular' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  $('.mitsubishi-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+    if ( $(this).hasClass('active') ){
+      $(this).find('input').prop("checked", true);
+      return false;
+    }
+  })
+})
+
+$(document).on('change', '.oban-selector', function(){
+  $('.additional-swatch-selector').removeClass('show');
+  $('.oban-swatch-selector').addClass('show');
+  $('.oban-swatch-selector').find('.spb-productoptionswatchwrapper').removeClass('active');
+  var selected_brand = $('.oban-selector option:selected').val();
+  $('.oban-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){    
+    $(this).addClass('active');    
+  }) 
+  $('.oban-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+    if ( $(this).hasClass('active') ){
+      $(this).find('input').prop("checked", true);
+      return false;
+    }
+  })
+})
+
+
+$(document).on('change', '.project-x-selector', function(){
+  $('.additional-swatch-selector').removeClass('show');
+  $('.project-x-swatch-selector').addClass('show');
+  $('.project-x-swatch-selector').find('.spb-productoptionswatchwrapper').removeClass('active');
+  var selected_brand = $('.project-x-selector option:selected').val();
+  if ( selected_brand == 'HZRDUS BLACK 4G 60' || selected_brand == 'HZRDUS BLACK 4G 70' ){
+    $('.project-x-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == '5.5' || $(this).find('input').val() == '6.0' || $(this).find('input').val() == '6.5' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'HZRDUS BLACK 4G 80' || selected_brand == 'EvenFlow T1100 White 85' || selected_brand == 'HZRDUS Smoke Blue RDX 60' || selected_brand == 'HZRDUS Smoke Blue RDX 70'
+       || selected_brand == 'EvenFlow Riptide 60' || selected_brand == 'EvenFlow Riptide CB60'
+     ){
+    $('.project-x-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == '6.0' || $(this).find('input').val() == '6.5' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'HZRDUS RED CB 40' ){
+    $('.project-x-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'Ladies' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'HZRDUS RED CB 50' || selected_brand == 'HZRDUS RED CB 60' ){
+    $('.project-x-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == '5.0' || $(this).find('input').val() == '5.5' || $(this).find('input').val() == '6.0' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'HZRDUS Black Hand Crafted 75' ){
+    $('.project-x-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == '5.5' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'HZRDUS Smoke Yellow 60' || selected_brand == 'HZRDUS Smoke Yellow 70' ){
+    $('.project-x-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == '6.0' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'EvenFlow Riptide 50' || selected_brand == 'EvenFlow Riptide CB50' ){
+    $('.project-x-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == '5.5' || $(this).find('input').val() == '6.0' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  if ( selected_brand == 'PRX HZRDUS BLACK 4G 60 TX (Excotic)' || selected_brand == 'PRX HZRDUS BLACK 4G 70 TX (Excotic)' || selected_brand == 'PRX HZRDUS BLACK 4G 80 TX (Excotic)' ){
+    $('.project-x-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+      if ( $(this).find('input').val() == 'Tour X' ){
+        $(this).addClass('active');
+      }
+    })
+  }
+  $('.project-x-swatch-selector').find('.spb-productoptionswatchwrapper').each(function(){
+    if ( $(this).hasClass('active') ){
+      $(this).find('input').prop("checked", true);
+      return false;
+    }
+  })
+})
+
+var MY_SELECTOR = ".rh-composition-wrapper" // selector for Set Composition DOM
+
+// var observer = new MutationObserver(function(mutations){
+//   for (var i=0; i < mutations.length; i++){
+//     for (var j=0; j < mutations[i].addedNodes.length; j++){
+//       // We're iterating through _all_ the elements as the parser parses them,
+//       // deciding if they're the one we're looking for.
+//       if (mutations[i].addedNodes[j].matches(MY_SELECTOR)){
+//         var rh_wrapper = document.querySelector(".rh-composition-wrapper");
+//         var lh_wrapper = document.querySelector(".lh-composition-wrapper");
+
+//         const all_available_righthand_options = document.querySelectorAll(".rh-composition-wrapper .spb-productoptionswatchwrapper");
+//         for (var i = 0; i < all_available_righthand_options.length; i++) {
+//           all_available_righthand_options[i].classList.add("active");
+//           if ( rh_hidden.indexOf(all_available_righthand_options[i].textContent) != -1 ){
+//             all_available_righthand_options[i].classList.remove("active");
+//           }
+//         }
+
+//         const all_available_lefthand_options = document.querySelectorAll(".lh-composition-wrapper .spb-productoptionswatchwrapper");
+//         for (var i = 0; i < all_available_lefthand_options.length; i++) {
+//           all_available_lefthand_options[i].classList.add("active");
+//           if ( lh_hidden.indexOf(all_available_lefthand_options[i].textContent) != -1 ){
+//             all_available_lefthand_options[i].classList.remove("active");
+//           }
+//         }
+//         document.querySelector(".purchase-details").classList.add("stop-add-to-cart");
+//         document.querySelector(".quantity-wrapper").classList.add("hidden");
+//         // We found our element, we're done:
+//         observer.disconnect();
+//       };
+//     }
+//   }
+// });
+
+// observer.observe(document.documentElement, {
+//   childList: true,
+//   subtree: true
+// });
