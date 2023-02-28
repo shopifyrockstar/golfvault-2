@@ -4390,42 +4390,98 @@ $(document).on('change', '.project-x-selector', function(){
   })
 })
 
+
 var MY_SELECTOR = ".rh-composition-wrapper" // selector for Set Composition DOM
 
-// var observer = new MutationObserver(function(mutations){
-//   for (var i=0; i < mutations.length; i++){
-//     for (var j=0; j < mutations[i].addedNodes.length; j++){
-//       // We're iterating through _all_ the elements as the parser parses them,
-//       // deciding if they're the one we're looking for.
-//       if (mutations[i].addedNodes[j].matches(MY_SELECTOR)){
-//         var rh_wrapper = document.querySelector(".rh-composition-wrapper");
-//         var lh_wrapper = document.querySelector(".lh-composition-wrapper");
+var observer = new MutationObserver(function(mutations){
+  for (var i=0; i < mutations.length; i++){
+    for (var j=0; j < mutations[i].addedNodes.length; j++){
+      // We're iterating through _all_ the elements as the parser parses them,
+      // deciding if they're the one we're looking for.
+      if (mutations[i].addedNodes[j].matches(MY_SELECTOR)){
+        var rh_wrapper = document.querySelector(".rh-composition-wrapper");
+        var lh_wrapper = document.querySelector(".lh-composition-wrapper");
 
-//         const all_available_righthand_options = document.querySelectorAll(".rh-composition-wrapper .spb-productoptionswatchwrapper");
-//         for (var i = 0; i < all_available_righthand_options.length; i++) {
-//           all_available_righthand_options[i].classList.add("active");
-//           if ( rh_hidden.indexOf(all_available_righthand_options[i].textContent) != -1 ){
-//             all_available_righthand_options[i].classList.remove("active");
-//           }
-//         }
+        const all_available_righthand_options = document.querySelectorAll(".rh-composition-wrapper .spb-productoptionswatchwrapper");
+        for (var i = 0; i < all_available_righthand_options.length; i++) {
+          all_available_righthand_options[i].classList.add("active");
+          if ( rh_hidden.indexOf(all_available_righthand_options[i].textContent) != -1 ){
+            all_available_righthand_options[i].classList.remove("active");
+          }
+        }
 
-//         const all_available_lefthand_options = document.querySelectorAll(".lh-composition-wrapper .spb-productoptionswatchwrapper");
-//         for (var i = 0; i < all_available_lefthand_options.length; i++) {
-//           all_available_lefthand_options[i].classList.add("active");
-//           if ( lh_hidden.indexOf(all_available_lefthand_options[i].textContent) != -1 ){
-//             all_available_lefthand_options[i].classList.remove("active");
-//           }
-//         }
-//         document.querySelector(".purchase-details").classList.add("stop-add-to-cart");
-//         document.querySelector(".quantity-wrapper").classList.add("hidden");
-//         // We found our element, we're done:
-//         observer.disconnect();
-//       };
-//     }
-//   }
-// });
+        const all_available_lefthand_options = document.querySelectorAll(".lh-composition-wrapper .spb-productoptionswatchwrapper");
+        for (var i = 0; i < all_available_lefthand_options.length; i++) {
+          all_available_lefthand_options[i].classList.add("active");
+          if ( lh_hidden.indexOf(all_available_lefthand_options[i].textContent) != -1 ){
+            all_available_lefthand_options[i].classList.remove("active");
+          }
+        }
+        document.querySelector(".purchase-details").classList.add("stop-add-to-cart");
+        document.querySelector(".quantity-wrapper").classList.add("hidden");
+        // We found our element, we're done:
+        observer.disconnect();
+      };
+    }
+  }
+});
 
-// observer.observe(document.documentElement, {
-//   childList: true,
-//   subtree: true
-// });
+observer.observe(document.documentElement, {
+  childList: true,
+  subtree: true
+});
+
+var open = window.XMLHttpRequest.prototype.open;
+var update_data = {};
+var rh_or_lh_count;
+var composition_count_rh_array, composition_count_lh_array, composition_value_rh, composition_value_lh;
+var main_product_id;
+function openReplacement(method, url, async, user, password) {    
+    
+    if ( url == '/cart.js' && method == 'GET' ){
+      console.log('cart.js called');
+      fetch(`${window.location.origin}/cart.js`)        
+        .then((response) => {
+          return response.json();
+        })
+        .then((response) => {
+          response.items.forEach((item) => {            
+            let group_number = item.properties._io_order_group;
+            composition_value_rh = item["properties"]["Composition for RH"];
+            composition_value_lh = item["properties"]["Composition for LH"];
+
+            // get the composition count for RH or LH
+            if ( composition_value_rh ){
+              composition_count_rh_array = composition_value_rh.split(","); //composition count for RH
+            }
+            if ( composition_value_lh ){
+              composition_count_lh_array = composition_value_lh.split(","); //composition count for LH
+            }
+            
+            if ( group_number ){ // if customizable product is added              
+              if ( composition_count_rh_array ){ //if custom RH iron product is added
+                rh_or_lh_count = composition_count_rh_array.length;
+              }
+              if ( composition_count_lh_array ){ //if custom LH iron product is added
+                rh_or_lh_count = composition_count_lh_array.length;
+              }
+              if (rh_or_lh_count.length > 0){
+                var main_product_id = item.variant_id;
+              }              
+              // composition_count_rh_array = '';
+              // composition_count_lh_array = '';
+              // rh_or_lh_count = '';
+            }
+            // console.log(rh_or_lh_count, main_product_id, item.variant_id);
+          });
+          
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    }
+
+    return open.apply(this, arguments);    
+}
+
+window.XMLHttpRequest.prototype.open = openReplacement;
