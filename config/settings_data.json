@@ -1,4 +1,822 @@
 {
   "current": {
+    "header_layout": "search_focus",
+    "image_loading_style": "none",
+    "show_locale_selector": false,
+    "show_currency_selector": false,
+    "mobile_menu_link_color": "rgba(0,0,0,0)",
+    "mobile_menu_link_hover_color": "rgba(0,0,0,0)",
+    "display_heading_divider": false,
+    "mega_menu_2": true,
+    "mega_menu_3": true,
+    "mega_menu_4": true,
+    "mega_menu_5": true,
+    "mega_menu_6": true,
+    "mega_menu_7": true,
+    "mega_menu_8": true,
+    "mega_menu_9": true,
+    "header_background": "#ffffff",
+    "enable_shopify_collection_badges": false,
+    "thumbnail_hover_enabled": false,
+    "stickers_enabled": false,
+    "collection_swatches": false,
+    "display_product_quantity": true,
+    "product_form_style": "radio",
+    "enable_swatches": false,
+    "notify_me_form": false,
+    "enable_quickshop": false,
+    "cart_action": "reload_page",
+    "cart_icon": "cart",
+    "show_multiple_currencies": false,
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "icon_label": "tag",
+          "text": "<p>Free standard shipping in North America on orders over $99.<\/p>",
+          "alignment": "center",
+          "size": "regular",
+          "button_label": "",
+          "link": "",
+          "button_style": "button--primary",
+          "background": "#f4f4f4",
+          "text_color": "#656565",
+          "width": "wide",
+          "homepage_only": false,
+          "enable_sticky": false,
+          "show_close_icon": true,
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "header__top-bar": {
+        "type": "header__top-bar",
+        "blocks": {
+          "header__top-bar-0": {
+            "type": "text",
+            "settings": {
+              "text": "123 Main Street, Pleasantville USA"
+            }
+          },
+          "header__top-bar-1": {
+            "type": "social_media",
+            "settings": {
+            }
+          }
+        },
+        "block_order": [
+          "header__top-bar-0",
+          "header__top-bar-1"
+        ],
+        "settings": {
+          "show_top_bar": false,
+          "font": "open_sans_n4",
+          "font_style": "none",
+          "font_size": 14,
+          "letter_spacing": 0,
+          "show_locale_selector": true,
+          "show_currency_selector": true,
+          "background": "rgba(0,0,0,0)",
+          "link_color": "rgba(0,0,0,0)",
+          "link_hover_color": "rgba(0,0,0,0)",
+          "text_color": "rgba(0,0,0,0)",
+          "width": "standard",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "header-classic": {
+        "type": "header-classic",
+        "settings": {
+          "logo_width": 210,
+          "main_linklist": "main-menu",
+          "menu_alignment": "center",
+          "dropdown_click": false,
+          "display_search": true,
+          "icon_style": "icons",
+          "enable_overlay": false,
+          "show_text_shadow": false,
+          "overlay_link_color": "rgba(0,0,0,0)",
+          "overlay_link_hover_color": "rgba(0,0,0,0)",
+          "overlay_background": "rgba(0,0,0,0)",
+          "overlay_background_opacity": 0,
+          "overlay_logo_width": 80,
+          "enable_sticky": true,
+          "sticky_background_opacity": 100,
+          "scroll_logo_width": 230,
+          "width": "standard",
+          "vertical_alignment": "center",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "mega-menu-1": {
+        "type": "mega-menu-1",
+        "blocks": {
+          "mega-menu-1-0": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "clubs",
+              "menu_1_link": "shopify:\/\/collections\/clubs"
+            }
+          },
+          "mega-menu-1-1": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "clubs-1-hidden",
+              "menu_1_link": ""
+            }
+          },
+          "mega-menu-1-2": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "clubs-2-hidden",
+              "menu_1_link": ""
+            }
+          },
+          "mega-menu-1-3": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "clubs-3-hidden",
+              "menu_1_link": ""
+            }
+          },
+          "mega-menu-1-4": {
+            "type": "featured_promo",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/M2_Fairway.jpg",
+              "richtext": "<p>Check every week for new clearance items and receive up to 50% off<\/p>",
+              "bgr_color": "#eeeeee",
+              "text_color": "#000000",
+              "promo_link": "shopify:\/\/collections\/clearance-clubs",
+              "button_label": "Shop Clearance",
+              "button_style": "button--primary"
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-1-0",
+          "mega-menu-1-1",
+          "mega-menu-1-2",
+          "mega-menu-1-3",
+          "mega-menu-1-4"
+        ],
+        "settings": {
+          "parent_link": "Clubs",
+          "enable_mega_menu_border": false,
+          "mega_menu_background_color": "#ffffff",
+          "mega_menu_text_color": "#404040",
+          "show_mega_bottom_bar": false,
+          "mega_bottom_bar_icon": "",
+          "mega_bottom_bar_text": "Add your deal, information or promotional text",
+          "mega_bottom_bar_link": "",
+          "size": "regular",
+          "bottom_banner_bg": "#007ace",
+          "bottom_banner_text": "#efefef",
+          "css_class": ".mega-menu",
+          "custom_css": ".mega-menu{font-size: 14px;}"
+        }
+      },
+      "footer__icon-bar": {
+        "type": "footer__icon-bar",
+        "blocks": {
+          "footer__icon-bar-0": {
+            "type": "text",
+            "settings": {
+              "icon": "leaf",
+              "text": "100% Organic",
+              "link": ""
+            }
+          },
+          "footer__icon-bar-1": {
+            "type": "text",
+            "settings": {
+              "icon": "bunny",
+              "text": "Cruelty free",
+              "link": ""
+            }
+          },
+          "footer__icon-bar-2": {
+            "type": "text",
+            "settings": {
+              "icon": "chat",
+              "text": "24\/7 support",
+              "link": ""
+            }
+          },
+          "footer__icon-bar-3": {
+            "type": "text",
+            "settings": {
+              "icon": "truck",
+              "text": "Free shipping",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "footer__icon-bar-0",
+          "footer__icon-bar-1",
+          "footer__icon-bar-2",
+          "footer__icon-bar-3"
+        ],
+        "settings": {
+          "show_icon_bar": false,
+          "alignment": "center",
+          "icon_position": "row",
+          "size": "medium",
+          "background": "#8b8b8b",
+          "link_color": "#ffffff",
+          "link_hover_color": "#000000",
+          "text_color": "#ffffff",
+          "width": "standard",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "footer-classic": {
+        "type": "footer-classic",
+        "blocks": {
+          "footer-classic-1": {
+            "type": "link_list",
+            "settings": {
+              "menu": "company",
+              "social_icons_footer": false
+            }
+          },
+          "3a69dd94-76e4-4425-b203-c4ad0b6a938e": {
+            "type": "link_list",
+            "settings": {
+              "menu": "footer",
+              "social_icons_footer": false
+            }
+          },
+          "7a9da8b3-aebd-4542-b226-d7a79427f7c6": {
+            "type": "logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/Golf_Vault_white_1.png",
+              "size": "small",
+              "text": "",
+              "social_icons_footer": false
+            }
+          },
+          "a3451c86-19ad-423e-a9cf-9187f537a561": {
+            "type": "link_list",
+            "settings": {
+              "menu": "policies",
+              "social_icons_footer": false
+            }
+          }
+        },
+        "block_order": [
+          "footer-classic-1",
+          "3a69dd94-76e4-4425-b203-c4ad0b6a938e",
+          "7a9da8b3-aebd-4542-b226-d7a79427f7c6",
+          "a3451c86-19ad-423e-a9cf-9187f537a561"
+        ],
+        "settings": {
+          "copyright_text": "",
+          "display_designed_by": false,
+          "display_shopify": false,
+          "display_payment_methods": true,
+          "show_locale_selector": false,
+          "show_currency_selector": false,
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "header-search-focus": {
+        "type": "header-search-focus",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/logo_d066deaf-fd5f-4caf-9e5d-3a36f2d43ae8.png",
+          "logo_width": 210,
+          "search_background": "#a0cc4a",
+          "search_icon": "#ffffff",
+          "icon_style": "icons_text",
+          "main_linklist": "main-menu",
+          "menu_alignment": "center",
+          "dropdown_click": false,
+          "enable_sticky": true,
+          "sticky_background_opacity": 100,
+          "scroll_logo_width": 230,
+          "width": "standard",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "mega-menu-2": {
+        "type": "mega-menu-2",
+        "blocks": {
+          "mega-menu-2-0": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "balls",
+              "menu_1_link": "shopify:\/\/collections\/balls"
+            }
+          },
+          "mega-menu-2-1": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "balls-1",
+              "menu_1_link": ""
+            }
+          },
+          "mega-menu-2-2": {
+            "type": "featured_product",
+            "settings": {
+              "featured_product": "titleist-pro-v1-golf-balls-1",
+              "richtext_bottom": ""
+            }
+          },
+          "mega-menu-2-3": {
+            "type": "featured_promo",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/golfball_2abeab18-bb5a-4b1c-bfbb-de4926bbe760.png",
+              "richtext": "<p>Check every week for new clearance items and receive up to 50% off<\/p>",
+              "bgr_color": "#eeeeee",
+              "text_color": "#000000",
+              "promo_link": "shopify:\/\/collections\/clearance-balls",
+              "button_label": "Shop Clearance",
+              "button_style": "button--primary"
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-2-0",
+          "mega-menu-2-1",
+          "mega-menu-2-2",
+          "mega-menu-2-3"
+        ],
+        "settings": {
+          "parent_link": "Balls",
+          "enable_mega_menu_border": false,
+          "mega_menu_background_color": "#ffffff",
+          "mega_menu_text_color": "#404040",
+          "show_mega_bottom_bar": false,
+          "mega_bottom_bar_icon": "",
+          "mega_bottom_bar_text": "Add your deal, information or promotional text",
+          "mega_bottom_bar_link": "",
+          "size": "regular",
+          "bottom_banner_bg": "#007ace",
+          "bottom_banner_text": "#efefef",
+          "css_class": ".mega-menu",
+          "custom_css": ".mega-menu{font-size: 14px;}"
+        }
+      },
+      "mega-menu-3": {
+        "type": "mega-menu-3",
+        "blocks": {
+          "mega-menu-3-0": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "shoes-1",
+              "menu_1_link": "shopify:\/\/collections\/shoes"
+            }
+          },
+          "mega-menu-3-1": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "shoes-2",
+              "menu_1_link": ""
+            }
+          },
+          "mega-menu-3-2": {
+            "type": "featured_product",
+            "settings": {
+              "featured_product": "puma-ptc-proadapt-delta-gold-shoes-limited-edition",
+              "richtext_bottom": ""
+            }
+          },
+          "mega-menu-3-3": {
+            "type": "featured_promo",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/PumaZ2.jpg",
+              "richtext": "<p>Check every week for new clearance items and receive up to 50% off<\/p>",
+              "bgr_color": "#eeeeee",
+              "text_color": "#000000",
+              "promo_link": "shopify:\/\/collections\/clearance-shoes",
+              "button_label": "Shop Clearance",
+              "button_style": "button--primary"
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-3-0",
+          "mega-menu-3-1",
+          "mega-menu-3-2",
+          "mega-menu-3-3"
+        ],
+        "settings": {
+          "parent_link": "Shoes",
+          "enable_mega_menu_border": false,
+          "mega_menu_background_color": "#ffffff",
+          "mega_menu_text_color": "#404040",
+          "show_mega_bottom_bar": false,
+          "mega_bottom_bar_icon": "",
+          "mega_bottom_bar_text": "Add your deal, information or promotional text",
+          "mega_bottom_bar_link": "",
+          "size": "regular",
+          "bottom_banner_bg": "#007ace",
+          "bottom_banner_text": "#efefef",
+          "css_class": ".mega-menu",
+          "custom_css": ".mega-menu{font-size: 14px;}"
+        }
+      },
+      "mega-menu-4": {
+        "type": "mega-menu-4",
+        "blocks": {
+          "mega-menu-4-0": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "mens-clothing",
+              "menu_1_link": "shopify:\/\/collections\/mens-clothing"
+            }
+          },
+          "mega-menu-4-1": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "womens-clothing",
+              "menu_1_link": "shopify:\/\/collections\/womens-clothing"
+            }
+          },
+          "mega-menu-4-2": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "kids-clothing",
+              "menu_1_link": "shopify:\/\/collections\/kids-clothing"
+            }
+          },
+          "mega-menu-4-3": {
+            "type": "featured_promo",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/puma-jackpot-5-pants-quarry-grey.jpg",
+              "richtext": "<p>Check every week for new clearance items and receive up to 50% off<\/p>",
+              "bgr_color": "#eeeeee",
+              "text_color": "#000000",
+              "promo_link": "shopify:\/\/collections\/clearance-clothing",
+              "button_label": "Shop Clearance",
+              "button_style": "button--primary"
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-4-0",
+          "mega-menu-4-1",
+          "mega-menu-4-2",
+          "mega-menu-4-3"
+        ],
+        "settings": {
+          "parent_link": "Clothing",
+          "enable_mega_menu_border": false,
+          "mega_menu_background_color": "#ffffff",
+          "mega_menu_text_color": "#404040",
+          "show_mega_bottom_bar": false,
+          "mega_bottom_bar_icon": "",
+          "mega_bottom_bar_text": "Add your deal, information or promotional text",
+          "mega_bottom_bar_link": "",
+          "size": "regular",
+          "bottom_banner_bg": "#007ace",
+          "bottom_banner_text": "#efefef",
+          "css_class": ".mega-menu",
+          "custom_css": ".mega-menu{font-size: 14px;}"
+        }
+      },
+      "mega-menu-5": {
+        "type": "mega-menu-5",
+        "blocks": {
+          "mega-menu-5-0": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "golf-bags",
+              "menu_1_link": "shopify:\/\/collections\/golf-bags"
+            }
+          },
+          "mega-menu-5-1": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "carts",
+              "menu_1_link": "shopify:\/\/collections\/carts"
+            }
+          },
+          "mega-menu-5-2": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "travel-bags",
+              "menu_1_link": "shopify:\/\/collections\/travel-bags"
+            }
+          },
+          "mega-menu-5-3": {
+            "type": "featured_promo",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/LEafs_Bag.jpg",
+              "richtext": "<p>Check every week for new clearance items and receive up to 50% off<\/p>",
+              "bgr_color": "#eeeeee",
+              "text_color": "#000000",
+              "promo_link": "shopify:\/\/collections\/clearance-bags",
+              "button_label": "Shop Clearance",
+              "button_style": "button--primary"
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-5-0",
+          "mega-menu-5-1",
+          "mega-menu-5-2",
+          "mega-menu-5-3"
+        ],
+        "settings": {
+          "parent_link": "Bags & Carts",
+          "enable_mega_menu_border": false,
+          "mega_menu_background_color": "#ffffff",
+          "mega_menu_text_color": "#404040",
+          "show_mega_bottom_bar": false,
+          "mega_bottom_bar_icon": "",
+          "mega_bottom_bar_text": "Add your deal, information or promotional text",
+          "mega_bottom_bar_link": "",
+          "size": "regular",
+          "bottom_banner_bg": "#007ace",
+          "bottom_banner_text": "#efefef",
+          "css_class": "mega menu",
+          "custom_css": ".mega-menu{font-size: 14px;}"
+        }
+      },
+      "mega-menu-6": {
+        "type": "mega-menu-6",
+        "blocks": {
+          "mega-menu-6-0": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "technology",
+              "menu_1_link": "shopify:\/\/collections\/technology"
+            }
+          },
+          "mega-menu-6-1": {
+            "type": "featured_product",
+            "settings": {
+              "featured_product": "sure-shot-pinloc-5000ip-laser-rangefinder",
+              "richtext_bottom": ""
+            }
+          },
+          "mega-menu-6-2": {
+            "type": "featured_product",
+            "settings": {
+              "featured_product": "garmin-approach-r10-launch-monitor",
+              "richtext_bottom": ""
+            }
+          },
+          "mega-menu-6-3": {
+            "type": "featured_promo",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/SC200.jpg",
+              "richtext": "<p>Check every week for new clearance items and receive up to 50% off<\/p>",
+              "bgr_color": "#eeeeee",
+              "text_color": "#000000",
+              "promo_link": "shopify:\/\/collections\/clearance-technology",
+              "button_label": "Shop Clearance",
+              "button_style": "button--primary"
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-6-0",
+          "mega-menu-6-1",
+          "mega-menu-6-2",
+          "mega-menu-6-3"
+        ],
+        "settings": {
+          "parent_link": "Technology",
+          "enable_mega_menu_border": false,
+          "mega_menu_background_color": "#ffffff",
+          "mega_menu_text_color": "#404040",
+          "show_mega_bottom_bar": false,
+          "mega_bottom_bar_icon": "",
+          "mega_bottom_bar_text": "Add your deal, information or promotional text",
+          "mega_bottom_bar_link": "",
+          "size": "regular",
+          "bottom_banner_bg": "#007ace",
+          "bottom_banner_text": "#efefef",
+          "css_class": "",
+          "custom_css": ".mega-menu{font-size: 14px;}"
+        }
+      },
+      "mega-menu-7": {
+        "type": "mega-menu-7",
+        "blocks": {
+          "mega-menu-7-0": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "accessories",
+              "menu_1_link": "shopify:\/\/collections\/accessories"
+            }
+          },
+          "mega-menu-7-1": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "accessories-1",
+              "menu_1_link": ""
+            }
+          },
+          "mega-menu-7-2": {
+            "type": "featured_product",
+            "settings": {
+              "featured_product": "callaway-weather-spann-mens-glove",
+              "richtext_bottom": ""
+            }
+          },
+          "mega-menu-7-3": {
+            "type": "featured_promo",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/towel.jpg",
+              "richtext": "<p>Check every week for new clearance items and receive up to 50% off<\/p>",
+              "bgr_color": "#eeeeee",
+              "text_color": "#000000",
+              "promo_link": "shopify:\/\/collections\/clearance-accessories",
+              "button_label": "Shop Clearance",
+              "button_style": "button--primary"
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-7-0",
+          "mega-menu-7-1",
+          "mega-menu-7-2",
+          "mega-menu-7-3"
+        ],
+        "settings": {
+          "parent_link": "Accessories",
+          "enable_mega_menu_border": false,
+          "mega_menu_background_color": "#ffffff",
+          "mega_menu_text_color": "#404040",
+          "show_mega_bottom_bar": false,
+          "mega_bottom_bar_icon": "",
+          "mega_bottom_bar_text": "Add your deal, information or promotional text",
+          "mega_bottom_bar_link": "",
+          "size": "regular",
+          "bottom_banner_bg": "#007ace",
+          "bottom_banner_text": "#efefef",
+          "css_class": "mega-menu",
+          "custom_css": ".mega-menu{font-size: 14px;}"
+        }
+      },
+      "mega-menu-8": {
+        "type": "mega-menu-8",
+        "blocks": {
+          "mega-menu-8-0": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "clearance",
+              "menu_1_link": "shopify:\/\/collections\/clearance"
+            }
+          },
+          "mega-menu-8-1": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "clearance-1",
+              "menu_1_link": ""
+            }
+          },
+          "mega-menu-8-2": {
+            "type": "featured_product",
+            "settings": {
+              "featured_product": "callaway-epic-speed-driver",
+              "richtext_bottom": ""
+            }
+          },
+          "mega-menu-8-3": {
+            "type": "featured_promo",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Cynthia_GV2.JPG",
+              "richtext": "<p>Check every week for new clearance items and receive up to 50% off<\/p>",
+              "bgr_color": "#eeeeee",
+              "text_color": "#000000",
+              "promo_link": "shopify:\/\/collections\/clearance",
+              "button_label": "Shop Clearance",
+              "button_style": "button--primary"
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-8-0",
+          "mega-menu-8-1",
+          "mega-menu-8-2",
+          "mega-menu-8-3"
+        ],
+        "settings": {
+          "parent_link": "Clearance",
+          "enable_mega_menu_border": false,
+          "mega_menu_background_color": "#ffffff",
+          "mega_menu_text_color": "#404040",
+          "show_mega_bottom_bar": false,
+          "mega_bottom_bar_icon": "",
+          "mega_bottom_bar_text": "Add your deal, information or promotional text",
+          "mega_bottom_bar_link": "",
+          "size": "regular",
+          "bottom_banner_bg": "#007ace",
+          "bottom_banner_text": "#efefef",
+          "css_class": "mega-menu",
+          "custom_css": ".mega-menu{font-size: 14px;}"
+        }
+      },
+      "mega-menu-9": {
+        "type": "mega-menu-9",
+        "blocks": {
+          "mega-menu-9-0": {
+            "type": "menu",
+            "settings": {
+              "menu_1": "in-the-simulator",
+              "menu_1_link": "shopify:\/\/collections\/all"
+            }
+          },
+          "mega-menu-9-1": {
+            "type": "featured_product",
+            "settings": {
+              "featured_product": "club-fittings",
+              "richtext_bottom": ""
+            }
+          },
+          "mega-menu-9-2": {
+            "type": "featured_product",
+            "settings": {
+              "featured_product": "golf-lessons",
+              "richtext_bottom": ""
+            }
+          },
+          "mega-menu-9-3": {
+            "type": "featured_promo",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Dave_GV.JPG",
+              "richtext": "",
+              "bgr_color": "#eeeeee",
+              "text_color": "#000000",
+              "promo_link": "shopify:\/\/products\/golf-practice-sessions",
+              "button_label": "Practice Sessions",
+              "button_style": "button--primary"
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-9-0",
+          "mega-menu-9-1",
+          "mega-menu-9-2",
+          "mega-menu-9-3"
+        ],
+        "settings": {
+          "parent_link": "Simulator",
+          "enable_mega_menu_border": false,
+          "mega_menu_background_color": "#ffffff",
+          "mega_menu_text_color": "#404040",
+          "show_mega_bottom_bar": false,
+          "mega_bottom_bar_icon": "",
+          "mega_bottom_bar_text": "Add your deal, information or promotional text",
+          "mega_bottom_bar_link": "",
+          "size": "regular",
+          "bottom_banner_bg": "#007ace",
+          "bottom_banner_text": "#efefef",
+          "css_class": "",
+          "custom_css": ".mega-menu{font-size: 14px;}"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ],
+    "blocks": {
+      "12120936241911852800": {
+        "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/reviews_tab\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {
+          "position": "right"
+        }
+      },
+      "14060646107696862457": {
+        "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/judgeme_core\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "3294164036280357830": {
+        "type": "shopify:\/\/apps\/mlv-auto-currency-switcher\/blocks\/mlveda-currencies-head\/92ab730f-097e-4571-b27c-3f449e098ca3",
+        "disabled": true,
+        "settings": {
+        }
+      },
+      "855628211100114053": {
+        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "2950567246721570496": {
+        "type": "shopify:\/\/apps\/tabs-studio\/blocks\/global_embed_block\/19980fb9-f2ca-4ada-ad36-c0364c3318b8",
+        "disabled": false,
+        "settings": {
+          "init_type": "fallback",
+          "init_selector": "",
+          "replace_contents": false,
+          "init_timing": "immediate",
+          "custom_script": "",
+          "custom_style": ""
+        }
+      }
+    }
   }
 }

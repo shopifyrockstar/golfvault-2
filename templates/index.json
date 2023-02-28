@@ -119,32 +119,36 @@
         "template--16702279483643__840ef956-5b07-4bdf-8260-524ce13bce73-1677001676d24cb3ac-0": {
           "type": "collection",
           "settings": {
-            "feature_collection": "",
-            "title": "",
+            "feature_collection": "carts",
+            "image": "shopify:\/\/shop_images\/bag-boy-nitron-graphite.png",
+            "title": "Golf Carts",
             "button_label": "View products"
           }
         },
         "template--16702279483643__840ef956-5b07-4bdf-8260-524ce13bce73-1677001676d24cb3ac-1": {
           "type": "collection",
           "settings": {
-            "feature_collection": "",
-            "title": "",
-            "button_label": "View products"
+            "feature_collection": "package-sets",
+            "image": "shopify:\/\/shop_images\/taylormade-rbz-speedlite-packageset_bbce4ed0-b7ee-488b-a850-6cdd69de61f2.png",
+            "title": "Package Sets",
+            "button_label": "View Products"
           }
         },
         "template--16702279483643__840ef956-5b07-4bdf-8260-524ce13bce73-1677001676d24cb3ac-2": {
           "type": "collection",
           "settings": {
-            "feature_collection": "",
-            "title": "",
+            "feature_collection": "pre-owned",
+            "image": "shopify:\/\/shop_images\/2020-Special-Select-Squareback-2-Putter_800_4ced9eb1-6f70-48c2-801b-041bc5c2f02d.png",
+            "title": "Demo\/Used Clubs",
             "button_label": "View products"
           }
         },
         "3e97b79e-f995-4493-b0ce-be0e95141e64": {
           "type": "collection",
           "settings": {
-            "feature_collection": "",
-            "title": "",
+            "feature_collection": "golf-bags",
+            "image": "shopify:\/\/shop_images\/200921-ClubGlider-Meridian-Navy_Cobalt.jpg",
+            "title": "Golf Bags & Travel Covers",
             "button_label": "View products"
           }
         }
@@ -177,8 +181,8 @@
     "ceda90ec-c129-4b1a-ae4e-d2fd06acb271": {
       "type": "index__featured-collection",
       "settings": {
-        "title": "Featured collection",
-        "collection": "",
+        "title": "ALL 2022 Drivers - Marked Down!",
+        "collection": "drivers",
         "products_per": 5,
         "mobile_products_per_row": "2",
         "products_limit": 10,
@@ -197,9 +201,9 @@
     "144496ac-e53d-40e2-b050-804d451dc696": {
       "type": "index__heading",
       "settings": {
-        "preheading": "<p>Add a preheading<\/p>",
-        "title": "Section heading",
-        "subheading": "<p>Additional text or description of section<\/p>",
+        "preheading": "",
+        "title": "Shop Men's Apparel",
+        "subheading": "",
         "preheading_color": "rgba(0,0,0,0)",
         "heading_color": "rgba(0,0,0,0)",
         "subheading_color": "rgba(0,0,0,0)",
@@ -224,37 +228,40 @@
         "template--16702279483643__39cd06cf-3d6e-4e7b-b3b7-0080a741aa88-167700183058d4a45d-0": {
           "type": "image",
           "settings": {
-            "link": "",
+            "image": "shopify:\/\/shop_images\/25116-3.png",
+            "link": "https:\/\/golfvault.com\/collections\/mens-sweaters",
             "overlay_background": "rgba(0,0,0,0)",
             "overlay_background_opacity": 70,
             "overlay_text": "rgba(0,0,0,0)",
-            "icon_label": "truck",
-            "title": "Special deal",
-            "text": "<p>Promotion description details.<\/p>"
+            "icon_label": "",
+            "title": "Shop Golf Sweaters",
+            "text": ""
           }
         },
         "template--16702279483643__39cd06cf-3d6e-4e7b-b3b7-0080a741aa88-167700183058d4a45d-1": {
           "type": "image",
           "settings": {
-            "link": "",
+            "image": "shopify:\/\/shop_images\/org_4c486528-f812-4439-abaf-74e437dccf3b.png",
+            "link": "https:\/\/golfvault.com\/collections\/mens-shirts",
             "overlay_background": "rgba(0,0,0,0)",
             "overlay_background_opacity": 70,
             "overlay_text": "rgba(0,0,0,0)",
-            "icon_label": "bag",
-            "title": "Special deal",
-            "text": "<p>Promotion description details.<\/p>"
+            "icon_label": "",
+            "title": "Shop Golf  Polos",
+            "text": ""
           }
         },
         "template--16702279483643__39cd06cf-3d6e-4e7b-b3b7-0080a741aa88-167700183058d4a45d-2": {
           "type": "image",
           "settings": {
-            "link": "",
+            "image": "shopify:\/\/shop_images\/FJ_57912_04.png",
+            "link": "https:\/\/golfvault.com\/collections\/mens-shoes",
             "overlay_background": "rgba(0,0,0,0)",
             "overlay_background_opacity": 70,
             "overlay_text": "rgba(0,0,0,0)",
-            "icon_label": "tag",
-            "title": "Special deal",
-            "text": "<p>Promotion description details.<\/p>"
+            "icon_label": "",
+            "title": "Shop Golf Shoes",
+            "text": ""
           }
         }
       },
@@ -279,21 +286,42 @@
         "custom_css": ""
       }
     },
+    "16770123233543315f": {
+      "type": "apps",
+      "blocks": {
+        "066bd0c2-953d-43d9-9e2d-54c9bef16419": {
+          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/featured_carousel\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 1680
+          }
+        }
+      },
+      "block_order": [
+        "066bd0c2-953d-43d9-9e2d-54c9bef16419"
+      ],
+      "settings": {
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
     "78e0ba3c-3096-4255-8466-5d430e06ea09": {
       "type": "index__image-with-text",
       "blocks": {
         "template--16702279483643__78e0ba3c-3096-4255-8466-5d430e06ea09-16770019073102d816-2": {
           "type": "text",
           "settings": {
-            "title": "Heading text here",
-            "heading_size": "regular",
-            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
-            "button_label": "View all",
+            "title": "About Us",
+            "heading_size": "large",
+            "text": "<p>Golf Vault was founded in 2012 by PGA of Canada member Dave Roy.  In the beginning, a desire for some added income and something more to do in the winter, lead to listing an Odyssey PT 82 Phil Mickelson putter on eBay.  After a successful first sale, the company was on its way to being one of Canada’s top e-commerce golf stores.  We now offer top products from popular brands such as Footjoy, Cobra, Callaway, Taylormade, Titleist, Mizuno & more.  We still sell on eBay and have many products on Amazon.<\/p><p>At the begginning of 2022, we opened a physical retail store in Kitchener, Ontario where customers can come in and shop. Within the store, we have one TrackMan Simulator where we conduct club fittings, golf lessons, and personal practice sessions. These one-on-one fittings and lessons are taught by PGA of Canada Members Jack McCarthy and Dave Roy.<\/p><p>Our goal is to provide our customers with exceptional customer service, unbeatable prices, a quick and easy shopping experience, super-fast shipping and helpful after-purchase support.  We help with any issues that arise, including manufacturer’s warranties. <\/p>",
+            "button_label": "",
             "link": "",
             "button_style": "button--primary",
             "background": "rgba(0,0,0,0)",
             "text_color": "rgba(0,0,0,0)",
-            "alignment": "left",
+            "alignment": "center",
             "vertical_position": "center"
           }
         }
@@ -316,11 +344,12 @@
       "settings": {
         "display_first_name": false,
         "display_last_name": false,
-        "newsletter_title": "Subscribe",
-        "newsletter_richtext": "<p>Sign up to get the latest on sales, new releases and more …<\/p>",
+        "newsletter_title": "<b>SUBSCRIBE<\/b>",
+        "newsletter_richtext": "<p>Subscribe to get weekly deals right to your inbox, plus contests & exclusive offers<\/p>",
         "newsletter_section_text_align": "center",
         "background_color": "#a0cc4a",
         "text_color": "#ffffff",
+        "background_image": "shopify:\/\/shop_images\/Home.jpg",
         "image_darken": true,
         "image_position": "left",
         "width": "wide",
@@ -336,9 +365,9 @@
     "6266bb58-0bfd-4bce-9671-e5922940eda5": {
       "type": "index__heading",
       "settings": {
-        "preheading": "<p>Add a preheading<\/p>",
-        "title": "Section heading",
-        "subheading": "<p>Additional text or description of section<\/p>",
+        "preheading": "",
+        "title": "",
+        "subheading": "<p><strong>Featured Brands<\/strong><\/p>",
         "preheading_color": "rgba(0,0,0,0)",
         "heading_color": "rgba(0,0,0,0)",
         "subheading_color": "rgba(0,0,0,0)",
@@ -363,49 +392,57 @@
         "template--16702279483643__45f69b0e-4795-4a8f-8f8b-c8d8238e220b-1677002054d84a46d8-0": {
           "type": "logo_image",
           "settings": {
-            "link": ""
+            "image": "shopify:\/\/shop_images\/cobra-golf-vector-logo-2022.png",
+            "link": "shopify:\/\/collections\/cobra"
           }
         },
         "template--16702279483643__45f69b0e-4795-4a8f-8f8b-c8d8238e220b-1677002054d84a46d8-1": {
           "type": "logo_image",
           "settings": {
-            "link": ""
+            "image": "shopify:\/\/shop_images\/taylormade.png",
+            "link": "shopify:\/\/collections\/taylormade"
           }
         },
         "template--16702279483643__45f69b0e-4795-4a8f-8f8b-c8d8238e220b-1677002054d84a46d8-2": {
           "type": "logo_image",
           "settings": {
-            "link": ""
+            "image": "shopify:\/\/shop_images\/footjoy-logo-brandlogos.net_-1.png",
+            "link": "shopify:\/\/collections\/footjoy"
           }
         },
         "template--16702279483643__45f69b0e-4795-4a8f-8f8b-c8d8238e220b-1677002054d84a46d8-3": {
           "type": "logo_image",
           "settings": {
-            "link": ""
+            "image": "shopify:\/\/shop_images\/25000.png",
+            "link": "shopify:\/\/collections\/under-armour"
           }
         },
         "template--16702279483643__45f69b0e-4795-4a8f-8f8b-c8d8238e220b-1677002054d84a46d8-4": {
           "type": "logo_image",
           "settings": {
-            "link": ""
+            "image": "shopify:\/\/shop_images\/Titleist_logo.svg_4ca1e57d-8bab-4f72-940d-dd7e42775824.png",
+            "link": "shopify:\/\/collections\/titleist"
           }
         },
         "c9e89414-59e4-4b02-8109-4caf224ff25b": {
           "type": "logo_image",
           "settings": {
-            "link": ""
+            "image": "shopify:\/\/shop_images\/1519856531413.jpg",
+            "link": "shopify:\/\/collections\/callaway"
           }
         },
         "7fc68ed0-ca0c-4b3b-91c1-17725288e8fc": {
           "type": "logo_image",
           "settings": {
-            "link": ""
+            "image": "shopify:\/\/shop_images\/mizuno-logo-black-and-white.png",
+            "link": "shopify:\/\/collections\/mizuno"
           }
         },
         "c1ca1f5a-adc6-4bb7-bb6e-9bc3b01bb3ba": {
           "type": "logo_image",
           "settings": {
-            "link": ""
+            "image": "shopify:\/\/shop_images\/Puma-Golf-All-Square-Golf.jpg",
+            "link": "shopify:\/\/collections\/puma"
           }
         }
       },
@@ -434,6 +471,26 @@
         "css_class": "",
         "custom_css": ""
       }
+    },
+    "1677012264d9284890": {
+      "type": "apps",
+      "blocks": {
+        "6727bc32-f259-4756-b27b-1ee191eb2d88": {
+          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/verified_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "6727bc32-f259-4756-b27b-1ee191eb2d88"
+      ],
+      "settings": {
+        "width": "wide",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
     }
   },
   "order": [
@@ -442,9 +499,11 @@
     "ceda90ec-c129-4b1a-ae4e-d2fd06acb271",
     "144496ac-e53d-40e2-b050-804d451dc696",
     "39cd06cf-3d6e-4e7b-b3b7-0080a741aa88",
+    "16770123233543315f",
     "78e0ba3c-3096-4255-8466-5d430e06ea09",
     "1ba323ca-c9c9-4529-8c4b-e619700a1d91",
     "6266bb58-0bfd-4bce-9671-e5922940eda5",
-    "45f69b0e-4795-4a8f-8f8b-c8d8238e220b"
+    "45f69b0e-4795-4a8f-8f8b-c8d8238e220b",
+    "1677012264d9284890"
   ]
 }

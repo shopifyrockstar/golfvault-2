@@ -59,7 +59,7 @@
     {% endif %}
   </div>
 
-  <div class="product__information
+  <div class="product__information {% if product.template_suffix == 'customizable' %}customizable-product{% endif %}
               has-product-sticker
               one-half
               column
