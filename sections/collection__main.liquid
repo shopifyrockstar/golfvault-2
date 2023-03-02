@@ -12,6 +12,18 @@
 {% assign css_class = section.settings.css_class %}
 {% assign custom_css = section.settings.custom_css %}
 
+{% assign boost_settings = shop.metafields.bc-sf-filter.settings %}
+{% assign boost_in_collection_search = boost_settings | split: 'enableCollectionSearch":' | last | split: ',"' | first | strip %}
+
+{%- assign filter_tree_vertical_style = shop.metafields.bc-sf-filter.settings | split: 'general":' | last | split: 'filterTreeVerticalStyle":"' | last | split: '","' | first | strip -%}
+{%- assign enable_filter_sticky_d = shop.metafields.bc-sf-filter.settings | split: 'general":' | last | split: 'stickyFilterOnDesktop":' | last | split: ',' | first | strip -%}
+{%- assign enable_filter_sticky_m = shop.metafields.bc-sf-filter.settings | split: 'general":' | last | split: 'stickyFilterOnMobile":' | last | split: ',' | first |  split: '}}' | first | strip -%}
+
+{%- assign enable_filter_tree_button_desktop_v = false -%}
+{%- if filter_tree_vertical_style == 'style-off-canvas' or filter_tree_vertical_style == 'style-expand' -%}
+  {%- assign enable_filter_tree_button_desktop_v = true -%}
+{%- endif -%}
+
 {% comment %} CSS {% endcomment %}
 {% style %}
   #shopify-section-{{ id }} {
@@ -81,10 +93,16 @@
               text_alignment: 'left'
       %}
     </div>
-    <div class="collection__filters three-fifths medium-down--one-whole column">
-      {% comment %} Collection filters {% endcomment %}
-      {% render 'collection__filters' %}
-    </div>
+    {% unless enable_filter_tree_button_desktop_v %}
+      <div class="collection__filters three-fifths medium-down--one-whole column">
+        <div class="field is-grouped is-flex-wrap">
+          <div class="collection__sort-by-filter select">
+            <div class="boost-pfs-filter-top-sorting collection__sort-by-filter select"></div>
+          </div>
+        </div>
+      </div>
+    {% endunless %}
+    
     {% if settings.heading_divider_width != 0 and settings.heading_divider_style == 'long' %}
       <div class="heading-divider-below heading-wrapper one-whole column hide-when-banner-enabled">
         <div class="heading-divider
@@ -107,115 +125,40 @@
       </div>
     </div>
   {% endif %}
+  {% if boost_in_collection_search == 'true' %}
+    <div class="boost-pfs-in-collection-search">
+      {% render 'boost-pfs-filter-skeleton', width: 4 %}
+    </div>
+  {% endif %}
+
+  {%- if enable_filter_tree_button_desktop_v  -%}
+    <div class="boost-pfs-filter-tree-desktop-button-wrapper {% if enable_filter_sticky_d  %} boost-pfs-filter-tree-desktop-button-sticky-wrapper {% endif %}">
+      <div class="boost-pfs-filter-tree-desktop-button">{%- render 'boost-pfs-filter-skeleton', type: 'button' -%}</div>
+      <div class="collection__filters column">
+        <div class="field is-grouped is-flex-wrap">
+          <div class="collection__sort-by-filter select">
+            <div class="boost-pfs-filter-top-sorting collection__sort-by-filter select"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
 
   {% comment %} Collection sidebar and main content area {% endcomment %}
-  <div class="container collection__content">
+  <div class="container collection__content boost-pfs-filter-wrapper">
 
-    {% if section.blocks.size > 0 and section.settings.show_sidebar %}
-      <aside class="sidebar-section
-                    one-fourth
-                    medium-down--one-whole
-                    column">
-
-        {% liquid
-          assign has_faceted_filtering_block = false
-          assign faceted_filtering_blocks_count = section.blocks | where: "type", "faceted_filtering" | size
-          if faceted_filtering_blocks_count > 0
-            assign has_faceted_filtering_block = true
-          endif
-          assign legacy_filter_block_types = 'tag_list,tag_filter,type_list,vendor_list' | split: ','
-        %}
-
-        {% for block in section.blocks %}
-          {% if block.type == 'faceted_filtering' %}
-            {% render 'sidebar__faceted-filter',
-                      block: block,
-                      collection: collection %}
-          {% else %}
-            {%- comment -%} Non-faceted filter blocks {%- endcomment -%}
-            <div id="shopify-section-{{ block.id }}"
-                class="sidebar__block
-                      block__{{ block.type | downcase | replace: '_', '-' }}
-                      has-padding-top
-                      has-padding-bottom
-                      {% if settings.toggle_sidebar %}sidebar-toggle-active{% endif %}
-                      {% if has_faceted_filtering_block and legacy_filter_block_types contains block.type %}is-hidden{% endif %}"
-                      {{ block.shopify_attributes }}>
-              {% if block.type == 'collection_list' %}
-                {% comment %} Tag list {% endcomment %}
-                {% render 'sidebar__collection-list', block: block %}
-
-              {% elsif block.type == 'featured_promo' %}
-                {% comment %} Featured promo {% endcomment %}
-                {% render 'sidebar__featured-promo',
-                        block: block,
-                        id: block.id
-                %}
-
-              {% elsif block.type == 'html' %}
-                {% comment %} Custom HTML {% endcomment %}
-                {% render 'sidebar__html', block: block %}
-
-              {% elsif block.type == 'menu' %}
-                {% comment %} Menu {% endcomment %}
-                {% render 'sidebar__menu', menu: block.settings.menu %}
-
-              {% elsif block.type == 'newsletter' %}
-                {% comment %} Newsletter {% endcomment %}
-                {% render 'sidebar__newsletter', block: block %}
-
-              {% elsif block.type == 'page' %}
-                {% comment %} Page {% endcomment %}
-                {% render 'sidebar__page', page: block.settings.page %}
-
-              {% elsif block.type == 'search' %}
-                {% comment %} Search {% endcomment %}
-                {% render 'sidebar__search',
-                        block: block,
-                        context: 'sidebar'
-                %}
-
-              {% elsif block.type == 'tag_filter' and has_faceted_filtering_block == false %}
-                {% comment %} Tag filter {% endcomment %}
-                {% render 'sidebar__tag-filter', block: block %}
-
-              {% elsif block.type == 'tag_list' and has_faceted_filtering_block == false %}
-                {% comment %} Tag list {% endcomment %}
-                {% render 'sidebar__tag-list', block: block %}
-
-              {% elsif block.type == 'text' %}
-                {% comment %} Text {% endcomment %}
-                {% render 'sidebar__text', block: block %}
-
-              {% elsif block.type == 'type_list' and has_faceted_filtering_block == false %}
-                {% comment %} Type list {% endcomment %}
-                {% render 'sidebar__type-list', block: block %}
-
-              {% elsif block.type == 'vendor_list' and has_faceted_filtering_block == false %}
-                {% comment %} Vendor list {% endcomment %}
-                {% render 'sidebar__vendor-list', block: block %}
-
-              {% endif %}
-            </div>
-          {% endif %}
-        {% endfor %}
-      </aside>
-    {% endif %}
+    <aside class="boost-pfs-filter-left-col sidebar-section one-fourth medium-down--one-whole column"> 
+      <div class="boost-pfs-filter-tree-mobile-button">{% render 'boost-pfs-filter-skeleton', type: 'button' %}</div>
+      <div class="boost-pfs-filter-tree boost-pfs-filter-tree-v">
+      	{%- unless enable_filter_tree_button_desktop_v -%}
+          {% render 'boost-pfs-filter-skeleton', type: 'filter-tree' %}
+        {%- endunless -%}
+      </div>
+    </aside>
 
     {% paginate collection.products by section.settings.pagination_limit %}
 
-    <div
-      class="
-        collection__main
-        {% if section.blocks.size > 0 and section.settings.show_sidebar %}
-          three-fourths
-          medium-down--one-whole
-          column
-          equal-columns--outside-trim
-        {% endif %}
-      "
-      data-collection-main
-    >
+    <div class="boost-pfs-filter-right-col collection__main {% if section.blocks.size > 0 and section.settings.show_sidebar %}three-fourths medium-down--one-whole column equal-columns--outside-trim{% endif %}" data-collection-main>
       {% if section.settings.show_promo_banner %}
         <div class="collection-promo-banner container">
           <div class="banner__wrapper
@@ -225,11 +168,10 @@
                       is-{{ section.settings.banner_height }}
                       has-margin-bottom">
             {% if section.settings.image != blank %}
-              {%
-                render 'image-element',
-                image: section.settings.image,
-                alt: section.settings.image.alt,
-                focal_point: section.settings.image.presentation.focal_point,
+              {% render 'image-element',
+                      image: section.settings.image,
+                      alt: section.settings.image.alt,
+                      stretch_width: true
               %}
             {% else %}
               {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -254,8 +196,8 @@
         </div>
       {% else %}
         <div class="collection-matrix__wrapper">
-          {% comment %} <div class="collection__loading-icon button is-loading is-loading--icon-only"></div> {% endcomment %}
-          <div class="container collection-matrix" {% if section.settings.pagination_type != 'basic_pagination' %}data-load-more--grid {% endif %}>
+          <div class="collection__loading-icon button is-loading is-loading--icon-only"></div>
+          <div class="boost-pfs-filter-products container collection-matrix" {% if section.settings.pagination_type != 'basic_pagination' %}data-load-more--grid {% endif %}>
             {%- assign products_per_row = section.settings.products_per_row -%}
             {%- assign mobile_products_per_row = section.settings.mobile_products_per_row -%}
             {% render 'product-loop',
@@ -272,12 +214,8 @@
 
       <div class="container container--pagination">
         <div class="one-whole column text-align-center">
-          {%- assign load_more_text = 'collections.general.pagination_button' | t -%}
-          {% render 'pagination',
-                  paginate: paginate,
-                  pagination_type: section.settings.pagination_type,
-                  load_more_text: load_more_text
-          %}
+          <div class="boost-pfs-filter-bottom-pagination"></div>
+          <div class="boost-pfs-filter-load-more"></div>
         </div>
       </div>
     </div>
@@ -301,10 +239,73 @@
   </div>
 </section>
 
+{% comment %} Remove theme's filter code to prevent conflict {% endcomment %}
+{% comment %} <script data-theme-editor-load-script src="{{ 'z__jsSidebar.js' | asset_url }}"></script> {% endcomment %}
+{% comment %} <script src="{{ 'z__jsCollection.js' | asset_url }}"></script> {% endcomment %}
 
-<script data-theme-editor-load-script src="{{ 'z__jsSidebar.js' | asset_url }}"></script>
-<script src="{{ 'z__jsCollection.js' | asset_url }}"></script>
+<script>
+	// Declare boostPFSThemeConfig variable
+	var boostPFSThemeConfig = {
+		label: {
+			sale: {{ 'collections.general.sale' | t | json }},
+			best_seller: {{ 'collections.general.best_seller' | t | json }},
+			coming_soon: {{ 'collections.general.coming_soon' | t | json }},
+			new: {{ 'collections.general.new' | t | json }},
+			pre_order: {{ 'collections.general.pre_order' | t | json }},
+			staff_pick: {{ 'collections.general.staff_pick' | t | json }},
+			sold_out: {{ 'products.product.sold_out' | t | json }},
+			from: {{ 'products.general.from' | t | json }},
+			previous: {{ 'general.pagination.previous' | t | json }},
+			next: {{ 'general.pagination.next' | t | json }},
+		},
+		custom: {
+			products_per_page: {% if section.settings.pagination_limit %} {{ section.settings.pagination_limit | json }} {% else %} 48 {% endif %},
+			products_per_row: {% if section.settings.products_per_row %} {{ section.settings.products_per_row | json }} {% else %} 3 {% endif %},
+			mobile_products_per_row: {% if section.settings.mobile_products_per_row %} {{ section.settings.mobile_products_per_row | json }} {% else %} 2 {% endif %},
+			pagination_type: {% if section.settings.pagination_type %} {{ section.settings.pagination_type | json }} {% else %} "basic_pagination" {% endif %},
+			enable_quickshop: {% if settings.enable_quickshop != nil %} {{ settings.enable_quickshop | json }} {% else %} true {% endif %},
+			stickers_enabled: {% if settings.stickers_enabled != nil %} {{ settings.stickers_enabled | json }} {% else %} true {% endif %},
+			sticker_shape: {% if settings.sticker_shape %} {{ settings.sticker_shape | json }} {% else %} "square" {% endif %},
+			sticker_position: {% if settings.sticker_position %} {{ settings.sticker_position | json }} {% else %} "left" {% endif %},
+			thumbnail_hover_enabled: {% if settings.thumbnail_hover_enabled != nil %} {{ settings.thumbnail_hover_enabled | json }} {% else %} true {% endif %},
+			thumbnail_text_alignment: {% if settings.thumbnail_text_alignment %} {{ settings.thumbnail_text_alignment | json }} {% else %} "center" {% endif %},
+			align_height: {% if section.settings.align_height != nil %} {{ section.settings.align_height | json }} {% else %} false {% endif %},
+			collection_height: {% if section.settings.collection_height != nil %} {{ section.settings.collection_height | json }} {% else %} 200 {% endif %},
+			image_loading_style: {% if settings.image_loading_style %} {{ settings.image_loading_style | json }} {% else %} "fade-in" {% endif %},
+			show_secondary_image: {% if settings.show_secondary_image != nil %} {{ settings.show_secondary_image | json }} {% else %} false {% endif %},
+			display_vendor: {% if settings.display_vendor != nil %} {{ settings.display_vendor | json }} {% else %} false {% endif %},
+			free_price_text: {% if settings.free_price_text %} {{ settings.free_price_text | json }} {% else %} "Free" {% endif %},
+			collection_swatches: {% if settings.collection_swatches != nil %} {{ settings.collection_swatches | json }} {% else %} true {% endif %},
+			collection_swatches_shape: {% if settings.collection_swatches_shape %} {{ settings.collection_swatches_shape | json }} {% else %} "square" {% endif %},
+			enable_shopify_collection_badges: {% if settings.enable_shopify_collection_badges != nil %} {{ settings.enable_shopify_collection_badges | json }} {% else %} false {% endif %},
+			enable_shopify_review_comments: {% if settings.enable_shopify_review_comments != nil %} {{ settings.enable_shopify_review_comments | json }} {% else %} false {% endif %},
+			show_multiple_currencies: {% if settings.show_multiple_currencies != nil %} {{ settings.show_multiple_currencies | json }} {% else %} false {% endif %},
+		}
+	};
+
+	var boostPFSTemplate = {
+
+		// Grid Template
+		'productGridItemHtml': {% render 'boost-pfs-filter-html', layout: 'productGridItemHtml' %},
+		'itemHoverHtml': {% render 'boost-pfs-filter-html', layout: 'itemHoverHtml' %},
+		'itemProductInfoHtml': {% render 'boost-pfs-filter-html', layout: 'itemProductInfoHtml' %},
+
+			
+		// Pagination Template
+		'previousActiveHtml': {% render 'boost-pfs-filter-html', layout: 'previousActiveHtml' %},
+		'nextActiveHtml': {% render 'boost-pfs-filter-html', layout: 'nextActiveHtml' %},
+		'pageItemHtml': {% render 'boost-pfs-filter-html', layout: 'pageItemHtml' %},
+		'pageItemSelectedHtml': {% render 'boost-pfs-filter-html', layout: 'pageItemSelectedHtml' %},
+		'pageItemRemainHtml': {% render 'boost-pfs-filter-html', layout: 'pageItemRemainHtml' %},
+		'paginateHtml': {% render 'boost-pfs-filter-html', layout: 'paginateHtml' %},
+
+		// Sorting Template
+		'sortingHtml': {% render 'boost-pfs-filter-html', layout: 'sortingHtml' %},
+	};
+</script>
+
 {% schema %}
+
 {
   "name": "Collection",
   "class": "collection-main jsCollection jsSidebar",

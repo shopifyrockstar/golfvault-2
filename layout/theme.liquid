@@ -175,6 +175,12 @@
     {% endif %}
   </script>
 
+
+ <!--begin-boost-pfs-filter-css-->
+   {% render 'boost-pfs-style' %}
+ <!--end-boost-pfs-filter-css-->
+
+ 
 </head>
 
 {%- capture money_format_output -%}
@@ -359,6 +365,10 @@
   {% include 'mlveda-currencies-switcher' %}{% include 'mlveda-currencies' %}{% include 'mlveda-flag' %}{% include 'mlveda-currencies-style' %}
   
 
+
+ <!--begin-boost-pfs-js-->
+   {% render 'boost-pfs' %}
+ <!--end-boost-pfs-js-->
 </body>
 </html>
 <!-- Begin Shopify-Afterpay JavaScript Snippet (v1.1.5) -->

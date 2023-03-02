@@ -12,6 +12,15 @@
 {% assign css_class = section.settings.css_class %}
 {% assign custom_css = section.settings.custom_css %}
 
+{%- assign filter_tree_vertical_style = shop.metafields.bc-sf-filter.settings | split: 'general":' | last | split: 'filterTreeVerticalStyle":"' | last | split: '","' | first | strip -%}
+{%- assign enable_filter_sticky_d = shop.metafields.bc-sf-filter.settings | split: 'general":' | last | split: 'stickyFilterOnDesktop":' | last | split: ',' | first | strip -%}
+{%- assign enable_filter_sticky_m = shop.metafields.bc-sf-filter.settings | split: 'general":' | last | split: 'stickyFilterOnMobile":' | last | split: ',' | first |  split: '}}' | first | strip -%}
+
+{%- assign enable_filter_tree_button_desktop_v = false -%}
+
+{%- if filter_tree_vertical_style == 'style-off-canvas' or filter_tree_vertical_style == 'style-expand' -%}
+  {%- assign enable_filter_tree_button_desktop_v = true -%}
+{%- endif -%}
 {% style %}
   #shopify-section-{{ id }} {
     padding-top: {{ padding_top }}px;
@@ -47,16 +56,11 @@
 {% endstyle %}
 
 {% comment %} HTML markup {% endcomment %}
-<section class="section
-        {{ css_class }}
-        is-width-{{ width }}"
-        {% if animation != "none" %}
-          data-scroll-class="{{ animation }}"
-        {% endif %}>
+<section class="section {{ css_class }} is-width-{{ width }}" {% if animation != "none" %} data-scroll-class="{{ animation }}"{% endif %}>
   <div class="container breadcrumb__container">
     <div class="one-whole column has-padding-bottom">
       <div class="breadcrumb__wrapper">
-        {% render 'breadcrumb', context: 'search' %}
+        {% include 'breadcrumb', type: 'search' %}
       </div>
     </div>
   </div>
@@ -64,345 +68,169 @@
   {% comment %} Search title {% endcomment %}
   <header class="container hide-when-banner-enabled">
     {% capture heading_title %}{{ 'general.search.title' | t }}{% endcapture %}
-    {% render 'heading',
-            title: heading_title,
-            heading_tag: 'h1',
-            context: 'search-page',
-            text_alignment: 'left'
-    %}
+    {% include 'heading', title: heading_title, heading_tag: 'h1', context: 'search-page', text_alignment: 'left' %}
   </header>
+  <h2 class="boost-pfs-search-result-header"></h2>
+  {% comment %} Search main {% endcomment %}
+  <div class="container">
+    <div class="one-whole column">
+      <form class="search-form" action="{{ routes.search_url }}">
+        <div class="search__fields">
+          {% if settings.search_option != 'everything' %}
+          <input class="visuallyhidden" type="text" name="type" value="product" />
+          {% endif %}
+          <label for="q" class="visuallyhidden">{{ settings.search_placeholder }}</label>
+          <div class="field">
+            <div class="control has-icons-left is-relative">
+              <input class="input" id="q" type="text" name="q" placeholder="{{ settings.search_placeholder }}" value="{{ search.terms }}" x-webkit-speech autocapitalize="off" autocomplete="off" autocorrect="off" />
+              {% include settings.icon, name: 'search', class: 'icon is-left' %}
+            </div>
+          </div>
+          <input type="submit" name="search" class="visuallyhidden" value="" />
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="boost-pfs-search-result-toolbar">
+    <div class="boost-pfs-search-result-item">
+      <ul class="boost-pfs-search-result-panel-controls">
+        <li>{% include 'boost-pfs-filter-skeleton', width: 2 %}</li>
+        <li>{% include 'boost-pfs-filter-skeleton', width: 2 %}</li>
+        <li>{% include 'boost-pfs-filter-skeleton', width: 1 %}</li>
+      </ul>
+    </div>
+      <div class="boost-pfs-search-result-item">
+        <span class="boost-pfs-search-total-result">
+          {% include 'boost-pfs-filter-skeleton', width: 2 %}
+        </span>
+    </div>
+  </div>
 
   {% comment %} Search sidebar and main content area {% endcomment %}
-  <div class="container search__content">
-
-    {% if section.blocks.size > 0 and section.settings.show_sidebar %}
-      <aside class="sidebar-section
-                    one-fourth
-                    medium-down--one-whole
-                    column
-                    has-margin-top">
-        {% for block in section.blocks %}
-          <div id="shopify-section-{{ block.id }}"
-              class="sidebar__block
-                    block__{{ block.type | downcase | replace: '_', '-' }}
-                    has-padding-top
-                    has-padding-bottom
-                    {% if settings.toggle_sidebar %}sidebar-toggle-active{% endif %}"
-                    {{ block.shopify_attributes }}>
-
-            {% if block.type == 'featured_promo' %}
-              {% comment %} Featured promo {% endcomment %}
-              {% render 'sidebar__featured-promo',
-                      block: block,
-                      id: block.id
-              %}
-
-            {% elsif block.type == 'menu' %}
-              {% comment %} Menu {% endcomment %}
-              {% render 'sidebar__menu', menu: block.settings.menu %}
-
-            {% elsif block.type == 'newsletter' %}
-              {% comment %} Newsletter {% endcomment %}
-              {% render 'sidebar__newsletter', block: block %}
-
-            {% elsif block.type == 'page' %}
-              {% comment %} Page {% endcomment %}
-              {% render 'sidebar__page', page: block.settings.page %}
-
-            {% elsif block.type == 'text' %}
-              {% comment %} Text {% endcomment %}
-              {% render 'sidebar__text', block: block %}
-
-            {% endif %}
-          </div>
-        {% endfor %}
-      </aside>
-    {% endif %}
-
-    {%- assign search_pagination = section.settings.pagination_limit -%}
-    {% paginate search.results by search_pagination %}
-
-    <main
-      class="
-        search__main
-        {% if section.blocks.size > 0 and section.settings.show_sidebar %}
-          three-fourths
-          medium-down--one-whole
-          column
-          has-margin-top
-          equal-columns--outside-trim
-        {% endif %}
-      "
-    >
-      {% if search.performed %}
-        <div class="container">
-          <div class="one-whole column">
-            <h3 class="search__results-count has-padding-bottom">
-              {% if search.results_count == 0 %}
-                {{ 'general.search.results_count.zero' | t: count: search.results_count }}
-              {% elsif search.results_count == 1 %}
-                {{ 'general.search.results_count.one' | t: count: search.results_count }}
-              {% else %}
-                {{ 'general.search.results_count.other' | t: count: search.results_count }}
-              {% endif %}
-            </h3>
+  <div class="search__content boost-pfs-filter-wrapper">
+    {%- if enable_filter_tree_button_desktop_v  -%}
+      <div class="boost-pfs-filter-tree-desktop-button-wrapper {% if enable_filter_sticky_d  %} boost-pfs-filter-tree-desktop-button-sticky-wrapper {% endif %}">
+        <div class="boost-pfs-filter-tree-desktop-button">{%- render 'boost-pfs-filter-skeleton', type: 'button' -%}</div>
+        <div class="collection__filters column">
+          <div class="field is-grouped is-flex-wrap">
+            <div class="collection__sort-by-filter select">
+              <div class="boost-pfs-filter-top-sorting collection__sort-by-filter select"></div>
+            </div>
           </div>
         </div>
-
-        {% if search.results == empty %}
-          {% comment %} No results {% endcomment %}
-          <div class="search__no-results container">
-            <div class="one-whole column text-align-center has-padding-bottom">
-              <p>{{ 'general.search.no_results_html' | t: terms: search.terms }}</p>
-            </div>
-          </div>
-
-          <div class="container">
-            <div class="one-whole column" data-autocomplete-{{ settings.enable_autocomplete }}>
-              <form class="search-form" action="{{ routes.search_url }}">
-                <div class="search__fields">
-                  <input type="hidden" name="type" value="{{ settings.search_option }}" />
-                  <label for="q" class="visually-hidden">{{ settings.search_placeholder }}</label>
-                  <div class="field">
-                    <div class="control has-icons-left is-relative">
-                      <input class="input" type="text" name="q" placeholder="{{ settings.search_placeholder }}" value="{{ search.terms }}" x-webkit-speech autocapitalize="off" autocomplete="off" autocorrect="off" data-q/>
-                      {% render 'icon',
-                              name: 'search',
-                              class: 'icon is-left'
-                      %}
-                    </div>
-                  </div>
-                  <input type="submit" name="search" class="visually-hidden" value="" />
-                </div>
-              </form>
-            </div>
-          </div>
-        {% else %}
-          {% comment %}Show all search results (including pages){% endcomment %}
-          {% if settings.search_option != 'product' or search.results.first.price == blank %}
-            <div class="search__results-list" {% if section.settings.pagination_type != 'basic_pagination' %}data-load-more--grid {% endif %}>
+      </div>
+    {%- endif -%}
+    <aside class="boost-pfs-filter-left-col sidebar-section one-fourth medium-down--one-whole column"> 
+      <div class="boost-pfs-filter-tree boost-pfs-filter-tree-v">
+        {%- unless enable_filter_tree_button_desktop_v -%}
+          {% render 'boost-pfs-filter-skeleton', type: 'filter-tree' %}
+        {%- endunless -%}
+      </div>
+      <div class="boost-pfs-filter-tree-mobile-button">{% include 'boost-pfs-filter-skeleton', type: 'button' %}</div>
+    </aside>
+  
+  {% assign products = search.results %}
+  {% assign products_per_row = section.settings.products_per_row %}
+    <div class="boost-pfs-filter-right-col search__main">
+      <div class="boost-pfs-filter-products" {% if section.settings.pagination_type != 'basic_pagination' %}data-load-more--grid {% endif %}>
+          {% comment %} Fix Shopify search term report {% endcomment %}
+          {% paginate search.results by 2 %}
+            {% if search.performed %}
               {% for item in search.results %}
-                <div class="search__item container has-padding-bottom" {% if section.settings.pagination_type != 'basic_pagination' %}data-load-more--grid-item{% endif %}>
-                  {%- assign featured_image = false -%}
-
-                  {% if item.object_type == 'article' and item.featured_media.preview_image %}
-                    {%- assign featured_image = true -%}
-                    <div class="one-fourth column search-result__image-container small-down--one-whole">
-                      <a href="{{ item.url }}" title="{{ item.title | escape }}">
-                        {%
-                          render 'image-element',
-                          image: item.featured_media.preview_image,
-                          alt: item.featured_media.preview_image.alt,
-                        %}
-                      </a>
-                    </div>
-                  {% elsif item.featured_image %}
-                    {%- assign featured_image = true -%}
-                    <div class="one-fourth column search-result__image-container small-down--one-whole">
-                      <a href="{{ item.url }}" title="{{ item.title | escape }}">
-                        {%
-                          render 'image-element',
-                          image: item.featured_image,
-                          alt: item.featured_image.alt,
-                        %}
-                      </a>
-                    </div>
-                  {% endif %}
-
-                  <div class="search-result__description {% if featured_image %}three-fourths{% else %}one-whole{% endif %} small-down--one-whole column">
-                    <h3 class="search-result__title">
-                      <a href="{{ item.url }}" title="{{ item.title | escape }}">{{ item.title }}</a>
-                    </h3>
-
-                    {% if item.price %}
-                      <div class="info has-padding-top">
-                        <span class="price {% if item.compare_at_price > item.price %}sale{% endif %}">
-                          {% if item.available %}
-                            {% if item.price_varies and item.price_min > 0 %}
-                              <small><em>{{ 'products.general.from' | t }}</em></small>
-                            {% endif %}
-                            {% if item.price_min > 0 %}
-                              <span class="money">
-                                {% render 'price-element', price: item.price_min %}
-                              </span>
-                            {% else %}
-                              {{ settings.free_price_text }}
-                            {% endif %}
-                            {% if item.compare_at_price > item.price %}
-                              <span class="compare-at-price">
-                                <span class="money">
-                                  {%
-                                    render 'price-element',
-                                    price: item.compare_at_price,
-                                  %}
-                                </span>
-                              </span>
-                            {% endif %}
-                          {% else %}
-                            <span class="sold-out">{{ 'products.product.sold_out' | t }}</span>
-                          {% endif %}
-                        </span>
-                      </div>
-                    {% endif %}
-
-                    <div class="has-padding-top">
-                      {% if item.object_type == 'article' %}
-                        <div class="blog_meta">
-                          {% if section.settings.blog_author %}
-                            <p>{{ 'blogs.article.by_author' | t: author: item.author }}</p>
-                          {% endif %}
-
-                          {% if section.settings.blog_date %}
-                            <p>{{ item.published_at | date: format: "month_day_year" }}</p>
-                          {% endif %}
-                        </div>
-                      {% endif %}
-
-                      {% if item.excerpt %}
-                        <div class="excerpt">{{ item.excerpt | strip_html | truncate: 500 }}</div>
-                      {% else %}
-                        <p>
-                          {{ item.content | strip_html | truncatewords: 40 | highlight: search.terms | replace: 'Description', '' | replace: 'Specs', '' | replace: 'Shipping', '' | replace: 'Size', '' }}
-                        </p>
-                      {% endif %}
-                    </div>
-                  </div>
-                </div>
+                <li style="display: none !important"></li>
               {% endfor %}
-            </div>
-            <div class="container">
-              <div class="one-whole column text-align-center has-margin-bottom">
-                {% render 'pagination',
-                        paginate: paginate,
-                        pagination_type: section.settings.pagination_type
-                %}
-              </div>
-            </div>
-            <div class="container">
-              <div class="one-whole column" data-autocomplete-{{ settings.enable_autocomplete }}>
-                <div class="search__text-content content">
-                  {% if section.settings.text %}
-                    {{ section.settings.text }}
-                  {% endif %}
-                </div>
-                <form class="search-form" action="{{ routes.search_url }}">
-                  <div class="search__fields">
-                    <input type="hidden" name="type" value="{{ settings.search_option }}" />
-                    <label for="q" class="visually-hidden">{{ settings.search_placeholder }}</label>
-                    <div class="field">
-                      <div class="control has-icons-left is-relative">
-                        <input class="input" type="text" name="q" placeholder="{{ settings.search_placeholder }}" value="{{ search.terms }}" x-webkit-speech autocapitalize="off" autocomplete="off" autocorrect="off" data-q/>
-                        {% render 'icon',
-                                name: 'search',
-                                class: 'icon is-left'
-                        %}
-                      </div>
-                    </div>
-                    <input type="submit" name="search" class="visually-hidden" value="" />
-                  </div>
-                </form>
-              </div>
-            </div>
-
-          {% else %}
-            <div class="container" {% if section.settings.pagination_type != 'basic_pagination' %}data-load-more--grid {% endif %}>
-              {%- assign products = search.results -%}
-              {%- assign products_per_row = section.settings.products_per_row -%}
-              {%- assign mobile_products_per_row = section.settings.mobile_products_per_row -%}
-              {%- assign limit = section.settings.pagination_limit -%}
-              {% render 'product-loop',
-                      limit: limit,
-                      products: products,
-                      products_per_row: products_per_row,
-                      mobile_products_per_row: mobile_products_per_row,
-                      align_height: section.settings.align_height,
-                      height: section.settings.collection_height
-              %}
-            </div>
-            <div class="container">
-              <div class="one-whole column text-align-center has-margin-bottom">
-                {% render 'pagination', paginate: paginate %}
-              </div>
-            </div>
-            <div class="container">
-              <div class="one-whole column" data-autocomplete-{{ settings.enable_autocomplete }}>
-                <form class="search-form" action="{{ routes.search_url }}">
-                  <div class="search__fields">
-                    <input type="hidden" name="type" value="{{ settings.search_option }}" />
-                    <label for="q" class="visually-hidden">{{ settings.search_placeholder }}</label>
-                    <div class="field">
-                      <div class="control has-icons-left is-relative">
-                        <input class="input" type="text" name="q" placeholder="{{ settings.search_placeholder }}" value="{{ search.terms }}" x-webkit-speech autocapitalize="off" autocomplete="off" autocorrect="off" data-q/>
-                        {% render 'icon',
-                                name: 'search',
-                                class: 'icon is-left'
-                        %}
-                      </div>
-                    </div>
-                    <input type="submit" name="search" class="visually-hidden" value="" />
-                  </div>
-                </form>
-              </div>
-            </div>
-
-          {% endif %}
-        {% endif %}
-
-      {% else %}
-        {% comment %} Default view (no search results) {% endcomment %}
-
-        <div class="container">
-          <div class="one-whole column" data-autocomplete-{{ settings.enable_autocomplete }}>
-            <div class="search__text-content content">
-              {% if section.settings.text %}
-                {{ section.settings.text }}
-              {% endif %}
-            </div>
-
-            <form class="search-form" action="{{ routes.search_url }}">
-              <div class="search__fields">
-                <input type="hidden" name="type" value="{{ settings.search_option }}" />
-                <label for="q" class="visually-hidden">{{ settings.search_placeholder }}</label>
-                <div class="field">
-                  <div class="control has-icons-left is-relative">
-                    <input class="input" type="text" name="q" placeholder="{{ settings.search_placeholder }}" value="{{ search.terms }}" x-webkit-speech autocapitalize="off" autocomplete="off" autocorrect="off" data-q/>
-                    {% render 'icon',
-                            name: 'search',
-                            class: 'icon is-left'
-                    %}
-                  </div>
-                </div>
-                <input type="submit" name="search" class="visually-hidden" value="" />
-              </div>
-            </form>
+            {% endif %}
+          {% endpaginate %}
+      </div>
+      <div class="boost-pfs-search-panel-product-show">
+        <div class="one-whole column text-align-center has-margin-bottom">
+          <div class="paginate">
+            <div class="boost-pfs-filter-bottom-pagination"></div>
+            <div class="boost-pfs-filter-load-more"></div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
 
-      {% endif %}
-
-    </main>
-
-    {% comment %} JavaScript {% endcomment %}
-    <script
-      type="application/json"
-      data-section-id="{{ section.id }}"
-      data-section-data
-    >
-      {
-        "enable_breadcrumb": {{ section.settings.search_breadcrumb | json }},
-        "pagination_type": {{ section.settings.pagination_type | json }},
-        "number_of_pages": {{ paginate.pages | json }}
-      }
-    </script>
-
-    {% endpaginate %}
+  <div class="boost-pfs-search-result-wrap boost-hidden">
+    <div class="boost-pfs-search-result-collections">
+      <div class="boost-pfs-search-result-list-item"><a href="#">{% include 'boost-pfs-filter-skeleton', width: 4 %}</a></div>
+      <div class="boost-pfs-search-result-list-item"><a href="#">{% include 'boost-pfs-filter-skeleton', width: 3 %}</a></div>
+      <div class="boost-pfs-search-result-list-item"><a href="#">{% include 'boost-pfs-filter-skeleton', width: 4 %}</a></div>
+    </div>
+    <div class="one-whole column text-align-center has-margin-bottom"><div class="paginate"><div class="boost-pfs-search-result-collection-pagination">{% include 'boost-pfs-filter-skeleton', width: 4 %}</div></div></div>
+  </div>
+  <div class="boost-pfs-search-result-wrap boost-hidden">
+    <div class="boost-pfs-search-result-pages">
+      <div class="boost-pfs-search-result-list-item"><a href="#">{% include 'boost-pfs-filter-skeleton', width: 4 %}</a></div>
+      <div class="boost-pfs-search-result-list-item"><a href="#">{% include 'boost-pfs-filter-skeleton', width: 3 %}</a></div>
+      <div class="boost-pfs-search-result-list-item"><a href="#">{% include 'boost-pfs-filter-skeleton', width: 4 %}</a></div>
+    </div>
+    <div class="one-whole column text-align-center has-margin-bottom"><div class="paginate"><div class="boost-pfs-search-result-page-pagination">{% include 'boost-pfs-filter-skeleton', width: 4 %}</div></div></div>
   </div>
 </section>
 
-<script data-theme-editor-load-script src="{{ 'z__jsSidebar.js' | asset_url }}"></script>
-<script src="{{ 'z__jsSearch.js' | asset_url }}"></script>
+<script>
+	// Declare boostPFSThemeConfig variable
+	var boostPFSThemeConfig = {
+		label: {
+			sale: {{ 'collections.general.sale' | t | json }},
+			best_seller: {{ 'collections.general.best_seller' | t | json }},
+			coming_soon: {{ 'collections.general.coming_soon' | t | json }},
+			new: {{ 'collections.general.new' | t | json }},
+			pre_order: {{ 'collections.general.pre_order' | t | json }},
+			staff_pick: {{ 'collections.general.staff_pick' | t | json }},
+			sold_out: {{ 'products.product.sold_out' | t | json }},
+			from: {{ 'products.general.from' | t | json }},
+			previous: {{ 'general.pagination.previous' | t | json }},
+			next: {{ 'general.pagination.next' | t | json }},
+		},
+		custom: {
+			products_per_page: {% if section.settings.pagination_limit %} {{ section.settings.pagination_limit | json }} {% else %} 48 {% endif %},
+			products_per_row: {% if section.settings.products_per_row %} {{ section.settings.products_per_row | json }} {% else %} 3 {% endif %},
+			mobile_products_per_row: {% if section.settings.mobile_products_per_row %} {{ section.settings.mobile_products_per_row | json }} {% else %} 2 {% endif %},
+			pagination_type: {% if section.settings.pagination_type %} {{ section.settings.pagination_type | json }} {% else %} "basic_pagination" {% endif %},
+			enable_quickshop: {% if settings.enable_quickshop != nil %} {{ settings.enable_quickshop | json }} {% else %} true {% endif %},
+			stickers_enabled: {% if settings.stickers_enabled != nil %} {{ settings.stickers_enabled | json }} {% else %} true {% endif %},
+			sticker_shape: {% if settings.sticker_shape %} {{ settings.sticker_shape | json }} {% else %} "square" {% endif %},
+			sticker_position: {% if settings.sticker_position %} {{ settings.sticker_position | json }} {% else %} "left" {% endif %},
+			thumbnail_hover_enabled: {% if settings.thumbnail_hover_enabled != nil %} {{ settings.thumbnail_hover_enabled | json }} {% else %} true {% endif %},
+			thumbnail_text_alignment: {% if settings.thumbnail_text_alignment %} {{ settings.thumbnail_text_alignment | json }} {% else %} "center" {% endif %},
+			align_height: {% if section.settings.align_height != nil %} {{ section.settings.align_height | json }} {% else %} false {% endif %},
+			collection_height: {% if section.settings.collection_height != nil %} {{ section.settings.collection_height | json }} {% else %} 200 {% endif %},
+			image_loading_style: {% if settings.image_loading_style %} {{ settings.image_loading_style | json }} {% else %} "fade-in" {% endif %},
+			show_secondary_image: {% if settings.show_secondary_image != nil %} {{ settings.show_secondary_image | json }} {% else %} false {% endif %},
+			display_vendor: {% if settings.display_vendor != nil %} {{ settings.display_vendor | json }} {% else %} false {% endif %},
+			free_price_text: {% if settings.free_price_text %} {{ settings.free_price_text | json }} {% else %} "Free" {% endif %},
+			collection_swatches: {% if settings.collection_swatches != nil %} {{ settings.collection_swatches | json }} {% else %} true {% endif %},
+			collection_swatches_shape: {% if settings.collection_swatches_shape %} {{ settings.collection_swatches_shape | json }} {% else %} "square" {% endif %},
+			enable_shopify_collection_badges: {% if settings.enable_shopify_collection_badges != nil %} {{ settings.enable_shopify_collection_badges | json }} {% else %} false {% endif %},
+			enable_shopify_review_comments: {% if settings.enable_shopify_review_comments != nil %} {{ settings.enable_shopify_review_comments | json }} {% else %} false {% endif %},
+			show_multiple_currencies: {% if settings.show_multiple_currencies != nil %} {{ settings.show_multiple_currencies | json }} {% else %} false {% endif %},
+		}
+	};
 
+	var boostPFSTemplate = {
+		// Grid Template
+		'productGridItemHtml': {% render 'boost-pfs-filter-html', layout: 'productGridItemHtml' %},
+		'itemHoverHtml': {% render 'boost-pfs-filter-html', layout: 'itemHoverHtml' %},
+		'itemProductInfoHtml': {% render 'boost-pfs-filter-html', layout: 'itemProductInfoHtml' %},
+
+		// Pagination Template
+		'previousActiveHtml': {% render 'boost-pfs-filter-html', layout: 'previousActiveHtml' %},
+		'nextActiveHtml': {% render 'boost-pfs-filter-html', layout: 'nextActiveHtml' %},
+		'pageItemHtml': {% render 'boost-pfs-filter-html', layout: 'pageItemHtml' %},
+		'pageItemSelectedHtml': {% render 'boost-pfs-filter-html', layout: 'pageItemSelectedHtml' %},
+		'pageItemRemainHtml': {% render 'boost-pfs-filter-html', layout: 'pageItemRemainHtml' %},
+		'paginateHtml': {% render 'boost-pfs-filter-html', layout: 'paginateHtml' %},
+
+		// Sorting Template
+		'sortingHtml': {% render 'boost-pfs-filter-html', layout: 'sortingHtml' %},
+	};
+</script>
 {% schema %}
+
 {
   "name": "Search",
   "class": "search-main has-sidebar-option jsSearch jsSidebar",

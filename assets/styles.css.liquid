@@ -7380,8 +7380,12 @@ a.tag:hover {
 }
 
 .ajax-cart__form {
-  max-height: 65vh;
+  /* max-height: 65vh;
   overflow: scroll;
+  overflow-x: hidden; */
+  overflow: auto;
+  overflow-x: hidden;
+  max-height: 100%;
 }
 
 .ajax-cart__cart-count {
@@ -7599,7 +7603,7 @@ a.tag:hover {
   top: 0;
   right: -40%;
   bottom: 0;
-  width: 40%;
+  width: 25%;
   height: 100%;
   transition: right 0.3s ease-in-out;
 }
