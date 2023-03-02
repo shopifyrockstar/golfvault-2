@@ -5564,7 +5564,7 @@
     top: 0;
     height: 100%;
     bottom: 0;
-    width: 40%;
+    /* width: 40%; */
     right: -40%;
     transition: right 0.3s ease-in-out; }
     @media only screen and (max-width: 798px) {
@@ -13456,4 +13456,13 @@
 
 .product__information .title, .product__information .subtitle{
   margin-bottom: 1.5rem;
+}
+
+.ajax-cart__product-title{
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.remove-close {
+  display: none;
 }

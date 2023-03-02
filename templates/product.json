@@ -22,8 +22,17 @@
           "settings": {
           }
         },
+        "baaa90e0-a111-4405-b272-965cd768ac66": {
+          "type": "shopify:\/\/apps\/infinite-options\/blocks\/app-block-price\/7e73b6f9-82b0-45f5-9b9b-04f446ba1a9b",
+          "settings": {
+            "color": "#000000",
+            "font": "Assistant, sans-serif",
+            "font_size": "18px"
+          }
+        },
         "price": {
           "type": "price",
+          "disabled": true,
           "settings": {
             "display_savings": true
           }
@@ -43,6 +52,7 @@
       "block_order": [
         "title",
         "14926ad1-3dca-4940-9e91-271e56d66451",
+        "baaa90e0-a111-4405-b272-965cd768ac66",
         "price",
         "form",
         "description"

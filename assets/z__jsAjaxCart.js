@@ -3,6 +3,8 @@ var __webpack_exports__ = {};
 window.PXUTheme.jsAjaxCart = {
   init: function ($section) {
 
+    var has_parent_product = false;
+
     // Add settings from schema to current object
     window.PXUTheme.jsAjaxCart = $.extend(this, window.PXUTheme.getSectionData($section));
 
@@ -109,7 +111,7 @@ window.PXUTheme.jsAjaxCart = {
       url: '/cart/change.js',
       data: 'quantity=0&line=' + lineID,
       dataType: 'json',
-      success: function (cart) {
+      success: function (cart) {        
         window.PXUTheme.jsAjaxCart.updateView();
       },
       error: function (XMLHttpRequest, textStatus) {

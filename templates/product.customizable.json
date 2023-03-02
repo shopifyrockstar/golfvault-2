@@ -1,153 +1,163 @@
 {
-    "sections": {
-      "sidebar": {
-        "type": "product__sidebar",
-        "settings": {
-          "padding_top": 20,
-          "padding_bottom": 20,
-          "css_class": "",
-          "custom_css": ""
-        }
-      },
-      "main": {
-        "type": "product__main",
-        "blocks": {
-          "title": {
-            "type": "title",
-            "settings": {
-            }
-          },
-          "14926ad1-3dca-4940-9e91-271e56d66451": {
-            "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-            "settings": {
-            }
-          },
-          "price": {
-            "type": "price",
-            "settings": {
-              "display_savings": true
-            }
-          },
-          "form": {
-            "type": "form",
-            "settings": {
-              "show_payment_button": true
-            }
-          },
-          "description": {
-            "type": "description",
-            "settings": {
-            }
-          }
-        },
-        "block_order": [
-          "title",
-          "14926ad1-3dca-4940-9e91-271e56d66451",
-          "price",
-          "form",
-          "description"
-        ],
-        "settings": {
-          "product_images_position": "left",
-          "set_product_height": false,
-          "product_height": 500,
-          "video_looping": false,
-          "gallery_arrows": true,
-          "enable_zoom": false,
-          "enable_product_lightbox": true,
-          "slideshow_speed": 0,
-          "slideshow_transition": "slide",
-          "display_thumbnails": true,
-          "thumbnail_position": "bottom-thumbnails",
-          "enable_thumbnail_slider": true,
-          "width": "standard",
-          "padding_top": 20,
-          "padding_bottom": 20,
-          "animation": "none",
-          "css_class": "",
-          "custom_css": ""
-        }
-      },
-      "16771005155b4b847c": {
-        "type": "apps",
-        "blocks": {
-          "56c80a4d-54fc-4f02-bb46-e3e17c28e8b5": {
-            "type": "shopify:\/\/apps\/rebuy-personalization-engine\/blocks\/rebuy-widget\/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
-            "settings": {
-              "enabled": true,
-              "id": "56798",
-              "product_id_enabled": true,
-              "collection_id_enabled": false
-            }
-          },
-          "392ba52b-0278-4d88-af66-22d3a9c58207": {
-            "type": "shopify:\/\/apps\/rebuy-personalization-engine\/blocks\/rebuy-widget\/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
-            "settings": {
-              "enabled": true,
-              "id": "56903",
-              "product_id_enabled": true,
-              "collection_id_enabled": false
-            }
-          }
-        },
-        "block_order": [
-          "56c80a4d-54fc-4f02-bb46-e3e17c28e8b5",
-          "392ba52b-0278-4d88-af66-22d3a9c58207"
-        ],
-        "settings": {
-          "width": "standard",
-          "padding_top": 20,
-          "padding_bottom": 20,
-          "css_class": "",
-          "custom_css": ""
-        }
-      },
-      "167710044832f81939": {
-        "type": "apps",
-        "blocks": {
-          "76d302c8-9a83-4150-b9f4-7f49c6a577b8": {
-            "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-            "settings": {
-            }
-          }
-        },
-        "block_order": [
-          "76d302c8-9a83-4150-b9f4-7f49c6a577b8"
-        ],
-        "settings": {
-          "width": "standard",
-          "padding_top": 20,
-          "padding_bottom": 20,
-          "css_class": "",
-          "custom_css": ""
-        }
-      },
-      "1677099171c7891bdd": {
-        "type": "apps",
-        "blocks": {
-          "02189e6d-8430-48a9-a826-bd8ca3322189": {
-            "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/verified_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-            "settings": {
-            }
-          }
-        },
-        "block_order": [
-          "02189e6d-8430-48a9-a826-bd8ca3322189"
-        ],
-        "settings": {
-          "width": "standard",
-          "padding_top": 20,
-          "padding_bottom": 20,
-          "css_class": "",
-          "custom_css": ""
-        }
+  "sections": {
+    "sidebar": {
+      "type": "product__sidebar",
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "css_class": "",
+        "custom_css": ""
       }
     },
-    "order": [
-      "sidebar",
-      "main",
-      "16771005155b4b847c",
-      "167710044832f81939",
-      "1677099171c7891bdd"
-    ]
-  }
+    "main": {
+      "type": "product__main",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "14926ad1-3dca-4940-9e91-271e56d66451": {
+          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        },
+        "8c8ab46d-a534-4437-8e5c-7366f099caba": {
+          "type": "shopify:\/\/apps\/infinite-options\/blocks\/app-block-price\/7e73b6f9-82b0-45f5-9b9b-04f446ba1a9b",
+          "settings": {
+            "color": "#000000",
+            "font": "Assistant, sans-serif",
+            "font_size": "18px"
+          }
+        },
+        "price": {
+          "type": "price",
+          "disabled": true,
+          "settings": {
+            "display_savings": true
+          }
+        },
+        "form": {
+          "type": "form",
+          "settings": {
+            "show_payment_button": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "14926ad1-3dca-4940-9e91-271e56d66451",
+        "8c8ab46d-a534-4437-8e5c-7366f099caba",
+        "price",
+        "form",
+        "description"
+      ],
+      "settings": {
+        "product_images_position": "left",
+        "set_product_height": false,
+        "product_height": 500,
+        "video_looping": false,
+        "gallery_arrows": true,
+        "enable_zoom": false,
+        "enable_product_lightbox": true,
+        "slideshow_speed": 0,
+        "slideshow_transition": "slide",
+        "display_thumbnails": true,
+        "thumbnail_position": "bottom-thumbnails",
+        "enable_thumbnail_slider": true,
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "16771005155b4b847c": {
+      "type": "apps",
+      "blocks": {
+        "56c80a4d-54fc-4f02-bb46-e3e17c28e8b5": {
+          "type": "shopify:\/\/apps\/rebuy-personalization-engine\/blocks\/rebuy-widget\/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+          "settings": {
+            "enabled": true,
+            "id": "56798",
+            "product_id_enabled": true,
+            "collection_id_enabled": false
+          }
+        },
+        "392ba52b-0278-4d88-af66-22d3a9c58207": {
+          "type": "shopify:\/\/apps\/rebuy-personalization-engine\/blocks\/rebuy-widget\/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+          "settings": {
+            "enabled": true,
+            "id": "56903",
+            "product_id_enabled": true,
+            "collection_id_enabled": false
+          }
+        }
+      },
+      "block_order": [
+        "56c80a4d-54fc-4f02-bb46-e3e17c28e8b5",
+        "392ba52b-0278-4d88-af66-22d3a9c58207"
+      ],
+      "settings": {
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "167710044832f81939": {
+      "type": "apps",
+      "blocks": {
+        "76d302c8-9a83-4150-b9f4-7f49c6a577b8": {
+          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "76d302c8-9a83-4150-b9f4-7f49c6a577b8"
+      ],
+      "settings": {
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "1677099171c7891bdd": {
+      "type": "apps",
+      "blocks": {
+        "02189e6d-8430-48a9-a826-bd8ca3322189": {
+          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/verified_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "02189e6d-8430-48a9-a826-bd8ca3322189"
+      ],
+      "settings": {
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "sidebar",
+    "main",
+    "16771005155b4b847c",
+    "167710044832f81939",
+    "1677099171c7891bdd"
+  ]
+}

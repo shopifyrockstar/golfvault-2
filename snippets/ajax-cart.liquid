@@ -7,9 +7,9 @@
         <div id="ajax-cart__content" data-ajax-cart-content></div>
       </div>
     {% elsif settings.cart_action == 'drawer' %}
-      <div class="ajax-cart__close-icon" data-ajax-cart-close>
+      {% comment %} <div class="ajax-cart__close-icon" data-ajax-cart-close>
         {% render 'icon', name: 'x' %}
-      </div>
+      </div> {% endcomment %}
       <div id="ajax-cart__content" data-ajax-cart-content></div>
     {% endif %}
   </section>
