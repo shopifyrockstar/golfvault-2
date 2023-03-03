@@ -4586,3 +4586,13 @@ $(document).on('change', '.project-x-selector', function(){
   })
 })
 
+$(window).on('load', function(){
+  var current_customizable_price = $(".customizable-product .infiniteoptions-price span").text();
+  if ( current_customizable_price ){
+    $(".additional-price").text(" - " + current_customizable_price);
+  }
+})
+
+$(".customizable-product .infiniteoptions-price span").on('DOMSubtreeModified',function(){
+  $(".additional-price").text(" - " + $(this).text());
+});

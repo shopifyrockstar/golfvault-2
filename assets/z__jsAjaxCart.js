@@ -2,9 +2,6 @@
 var __webpack_exports__ = {};
 window.PXUTheme.jsAjaxCart = {
   init: function ($section) {
-
-    var has_parent_product = false;
-
     // Add settings from schema to current object
     window.PXUTheme.jsAjaxCart = $.extend(this, window.PXUTheme.getSectionData($section));
 
@@ -318,6 +315,43 @@ window.PXUTheme.jsAjaxCart = {
       if (window.PXUTheme.currencyConverter) {
         window.PXUTheme.currencyConverter.convertCurrencies();
       }
+      has_parent_product = [];
+      var remove_amount = [];
+      var starting_line = [];
+      $.ajax({
+        dataType: "json",
+        async: false,
+        cache: false,
+        url: "/cart",
+        success: function (response) {
+          console.log(response);
+          response.items.forEach((item) => {
+            // console.log(item.properties._io_order_group);
+            if (item.properties._io_order_group){
+              has_parent_product.push("true");
+            }else{
+              has_parent_product.push("false");
+            }                      
+          })
+          console.log(has_parent_product);
+          response.items.forEach((item, index) => {
+            if ( has_parent_product.indexOf('true') != -1 ){
+              //silence is gold
+            }else{
+              //need to remove upcharge products
+              console.log(item.properties._io_parent_order_group, index);              
+              if ( item.properties._io_parent_order_group ){
+                remove_amount.push(1);
+                starting_line.push(index + 1);                
+              }
+            }
+          })
+          for (i =0; i< remove_amount.length;i++){
+            window.PXUTheme.jsAjaxCart.removeFromCart(starting_line[0]);
+          }
+          
+        }
+      });
     })
     .fail(() => {
       // some error handling
