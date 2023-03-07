@@ -37,6 +37,7 @@ window.PXUTheme.jsAjaxCart = {
     $(document).on('click', '[data-ajax-cart-delete]', function (e) {
       e.preventDefault();
       const lineID = $(this).parents('[data-line-item]').data('line-item');
+      shouldRemoveLineID = lineID;
       window.PXUTheme.jsAjaxCart.removeFromCart(lineID);
 
       if (window.PXUTheme.jsCart) {
@@ -102,7 +103,7 @@ window.PXUTheme.jsAjaxCart = {
     this.ajaxCartDrawer.removeClass('is-visible');
     $('.ajax-cart__overlay').removeClass('is-visible');
   },
-  removeFromCart: function (lineID, callback) {
+  removeFromCart: function (lineID, callback) {    
     $.ajax({
       type: 'POST',
       url: '/cart/change.js',
@@ -116,7 +117,7 @@ window.PXUTheme.jsAjaxCart = {
         response = response.description;
 
       }
-    });
+    });    
   },
   initializeAjaxCart: function () {
 
@@ -327,29 +328,17 @@ window.PXUTheme.jsAjaxCart = {
           console.log(response);
           response.items.forEach((item) => {
             // console.log(item.properties._io_order_group);
-            if (item.properties._io_order_group){
-              has_parent_product.push("true");
-            }else{
-              has_parent_product.push("false");
-            }                      
-          })
-          console.log(has_parent_product);
-          response.items.forEach((item, index) => {
-            if ( has_parent_product.indexOf('true') != -1 ){
-              //silence is gold
-            }else{
-              //need to remove upcharge products
-              console.log(item.properties._io_parent_order_group, index);              
-              if ( item.properties._io_parent_order_group ){
-                remove_amount.push(1);
-                starting_line.push(index + 1);                
+            if ( item.properties ){
+              if (item.properties._io_order_group){
+                has_parent_product.push("true");
+              }else{
+                has_parent_product.push("false");
               }
             }
           })
           for (i =0; i< remove_amount.length;i++){
             window.PXUTheme.jsAjaxCart.removeFromCart(starting_line[0]);
           }
-          
         }
       });
     })

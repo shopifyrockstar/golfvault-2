@@ -5387,6 +5387,7 @@
     position: absolute;
     right: 0;
     margin: 15px 10px;
+    z-index: 999;
     top:10px;
     cursor: pointer; }
   
