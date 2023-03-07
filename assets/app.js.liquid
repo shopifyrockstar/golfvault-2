@@ -4098,77 +4098,18 @@ observer.observe(document.documentElement, {
 var group_number;
 var rh_or_lh_count;
 var composition_count_rh_array, composition_count_lh_array, composition_value_rh, composition_value_lh;
-var main_product_id, should_be_changed_quantity, data_for_update_js, upcharge_group_parent_number;
+var should_be_changed_quantity;
+var main_product_id, data_for_update_js, upcharge_group_parent_number;
 var update_need_products_array = [];
 var main_product_array=[];
 var upcharge_product_array=[];
 
 var open = window.XMLHttpRequest.prototype.open;
 function openReplacement(method, url, async, user, password) {
-  console.log(method, url);
-  if ( url == '/cart.js' && method == 'GET' ){
-    console.log('cart.js called');
-    fetch('/cart.js')        
-      .then((response) => {
-        return response.json();
-      })
-      .then((response) => {
-        response.items.forEach((item) => {          
-          //getting main product id and composition count
-          if (item.properties._io_order_group){
-            if ( main_product_array.includes(item.variant_id) == false ){
-              main_product_array.push(item.variant_id);
-            }            
-            group_number = item.properties._io_order_group;
-            if ( item["properties"]["Composition for RH"] ){
-              should_be_changed_quantity = item["properties"]["Composition for RH"].split(",").length;
-            }else if( item["properties"]["Composition for LH"] ){
-              should_be_changed_quantity = item["properties"]["Composition for LH"].split(",").length;
-            }
-            main_product_id = parseInt(item.variant_id); //main product id
-            if ( update_need_products_array.includes(main_product_id) == false ){
-              update_need_products_array.push(main_product_id); //adding main product id to the array list
-            }
-            console.log("updated quantities is " + should_be_changed_quantity + "main id is "+ update_need_products_array);
-          }
-          //end getting main product id and composition count
-          
-          //getting upcharge product id and pushing it to the array
-          if (item.properties._io_parent_order_group){
-            if ( upcharge_product_array.includes(item.variant_id) == false ){
-              upcharge_product_array.push(item.variant_id);
-            }
-            let upcharge_product_id = parseInt(item.variant_id);
-            if ( upcharge_group_parent_number == group_number && update_need_products_array.includes(upcharge_product_id) == false ){
-              update_need_products_array.push(upcharge_product_id);
-            }
-          }
-          //end getting upcharge product id and pushing it to the array            
-        });         
-        setTimeout(function(){
-          for ( i = 0; i < update_need_products_array.length; i++ ){          
-            if (i==0){
-              data_for_update_js = "updates[" + update_need_products_array[i] + "]=" + should_be_changed_quantity;
-            }else{
-              data_for_update_js = data_for_update_js + "&" + "updates[" + update_need_products_array[i] + "]=" + should_be_changed_quantity;
-            }          
-          }
-          console.log(data_for_update_js);
-          jQuery.post(window.Shopify.routes.root + 'cart/update.js',
-            data_for_update_js
-          );
-          localStorage.setItem("main_product", main_product_array);
-          localStorage.setItem("upcharge_product", update_need_products_array);
-          return false;
-        }, 1500)         
-      })
-      .catch((e) => {
-        console.error(e);
-      });
-  }
+  // console.log(method, url); 
 
   if ( url == '/cart/add.js' && method == 'POST' ){
-    setTimeout(function(){
+    // setTimeout(function(){
       fetch('/cart.js')        
       .then((response) => {
         return response.json();
@@ -4176,34 +4117,42 @@ function openReplacement(method, url, async, user, password) {
       .then((response) => {
         response.items.forEach((item) => {          
           //getting main product id and composition count
-          if (item.properties._io_order_group){
-            if ( main_product_array.includes(item.variant_id) == false ){
-              main_product_array.push(item.variant_id);
-            }            
-            group_number = item.properties._io_order_group;
-            if ( item["properties"]["Composition for RH"] ){
-              should_be_changed_quantity = item["properties"]["Composition for RH"].split(",").length;
-            }else if( item["properties"]["Composition for LH"] ){
-              should_be_changed_quantity = item["properties"]["Composition for LH"].split(",").length;
+          if (item.properties){
+            if (item.properties._io_order_group){
+              if ( main_product_array.includes(item.variant_id) == false ){
+                main_product_array.push(item.variant_id);
+              }            
+              group_number = item.properties._io_order_group;
+              if ( item["properties"]["Composition for RH"] ){
+                should_be_changed_quantity = item["properties"]["Composition for RH"].split(",").length;
+              }else if( item["properties"]["Composition for LH"] ){
+                should_be_changed_quantity = item["properties"]["Composition for LH"].split(",").length;
+              }else{
+                should_be_changed_quantity = 0;
+              }
+              main_product_id = parseInt(item.variant_id); //main product id
+              if ( update_need_products_array.includes(main_product_id) == false ){
+                update_need_products_array.push(main_product_id); //adding main product id to the array list
+              }
+              console.log("updated quantities is " + should_be_changed_quantity + "main id is "+ update_need_products_array);
             }
-            main_product_id = parseInt(item.variant_id); //main product id
-            if ( update_need_products_array.includes(main_product_id) == false ){
-              update_need_products_array.push(main_product_id); //adding main product id to the array list
-            }
-            console.log("updated quantities is " + should_be_changed_quantity + "main id is "+ update_need_products_array);
-          }
+          }          
           //end getting main product id and composition count
           
           //getting upcharge product id and pushing it to the array
-          if (item.properties._io_parent_order_group){
-            if ( upcharge_product_array.includes(item.variant_id) == false ){
-              upcharge_product_array.push(item.variant_id);
+          if (item.properties){
+            if (item.properties._io_parent_order_group){
+              if ( upcharge_product_array.includes(item.variant_id) == false ){
+                upcharge_product_array.push(item.variant_id);
+              }
+              // console.log(upcharge_product_array);
+              let upcharge_product_id = parseInt(item.variant_id);
+              upcharge_group_parent_number = item.properties._io_parent_order_group;
+              if ( upcharge_group_parent_number == group_number && update_need_products_array.includes(upcharge_product_id) == false ){
+                update_need_products_array.push(upcharge_product_id);
+              }
             }
-            let upcharge_product_id = parseInt(item.variant_id);
-            if ( upcharge_group_parent_number == group_number && update_need_products_array.includes(upcharge_product_id) == false ){
-              update_need_products_array.push(upcharge_product_id);
-            }
-          }
+          }          
           //end getting upcharge product id and pushing it to the array            
         });         
         setTimeout(function(){
@@ -4239,7 +4188,7 @@ function openReplacement(method, url, async, user, password) {
       .catch((e) => {
         console.error(e);
       });
-    }, 1000)    
+    // }, 1000)    
   }
 
   return open.apply(this, arguments);    

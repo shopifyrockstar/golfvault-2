@@ -36,15 +36,67 @@ window.PXUTheme.jsAjaxCart = {
 
     $(document).on('click', '[data-ajax-cart-delete]', function (e) {
       e.preventDefault();
-      const lineID = $(this).parents('[data-line-item]').data('line-item');
-      shouldRemoveLineID = lineID;
-      window.PXUTheme.jsAjaxCart.removeFromCart(lineID);
+      var lineID = $(this).parents('[data-line-item]').data('line-item');
+      console.log(lineID);
+      // shouldRemoveLineID = lineID;
+      var remove_need_products_array = [];
+      $.ajax({
+        dataType: "json",
+        async: false,
+        cache: false,
+        url: "/cart",
+        success: function (response) {
+          console.log(response);
+          response.items.forEach((item, index) => {
+            // console.log(item.properties._io_order_group);
+            if ( item.properties ){ //if customizable product
+              console.log(item.properties);
+              if (item.properties._io_order_group && (index+1) == lineID){ // if main customizable product
+                shouldRemoveLineID = item.properties._io_order_group;
+                remove_amount = 1;
+                remove_need_products_array.push(item.variant_id);
+              }
+              if ( shouldRemoveLineID == item.properties._io_parent_order_group ){
+                remove_amount = remove_amount + 1;
+                remove_need_products_array.push(item.variant_id);
+              }
+            }
+          })
+          console.log(remove_amount, remove_need_products_array);
+          if ( remove_need_products_array.length > 0 ){
+            for ( i = 0; i < remove_need_products_array.length; i++ ){          
+              if (i==0){
+                data_for_update_js = "updates[" + remove_need_products_array[i] + "]=" + 0;
+              }else{
+                data_for_update_js = data_for_update_js + "&" + "updates[" + remove_need_products_array[i] + "]=" + 0;
+              }          
+            }
+            // console.log(data_for_update_js);
+            $.ajax({
+              type: 'POST',
+              url: '/cart/update.js',
+              data: data_for_update_js,
+              dataType: 'json',
+              success: function (cart) {
+                window.PXUTheme.jsAjaxCart.updateView();
+              },
+              error: function (XMLHttpRequest, textStatus) {
+                var response = eval('(' + XMLHttpRequest.responseText + ')');
+                response = response.description;      
+              }
+            });
+          }else{
+            window.PXUTheme.jsAjaxCart.removeFromCart(lineID);
 
-      if (window.PXUTheme.jsCart) {
-        window.PXUTheme.jsCart.removeFromCart(lineID);
-      }
+            if (window.PXUTheme.jsCart) {
+              window.PXUTheme.jsCart.removeFromCart(lineID);
+            }
 
-      return false;
+            return false;
+          }          
+        }
+      });
+      
     });
 
     $(document).on('click', '[data-ajax-cart-close]', function (e) {
@@ -316,31 +368,7 @@ window.PXUTheme.jsAjaxCart = {
       if (window.PXUTheme.currencyConverter) {
         window.PXUTheme.currencyConverter.convertCurrencies();
       }
-      has_parent_product = [];
-      var remove_amount = [];
-      var starting_line = [];
-      $.ajax({
-        dataType: "json",
-        async: false,
-        cache: false,
-        url: "/cart",
-        success: function (response) {
-          console.log(response);
-          response.items.forEach((item) => {
-            // console.log(item.properties._io_order_group);
-            if ( item.properties ){
-              if (item.properties._io_order_group){
-                has_parent_product.push("true");
-              }else{
-                has_parent_product.push("false");
-              }
-            }
-          })
-          for (i =0; i< remove_amount.length;i++){
-            window.PXUTheme.jsAjaxCart.removeFromCart(starting_line[0]);
-          }
-        }
-      });
+      
     })
     .fail(() => {
       // some error handling
