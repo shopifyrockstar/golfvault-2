@@ -175,6 +175,13 @@
     {% endif %}
   </script>
 
+  {% if template.suffix == 'customizable' %}
+    <script>
+      var remove_amount = 0;
+      var shouldRemoveLineID = 0;
+    </script>
+  {% endif %}
+
 
  <!--begin-boost-pfs-filter-css-->
    {% render 'boost-pfs-style' %}

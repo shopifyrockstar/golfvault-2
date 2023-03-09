@@ -5387,6 +5387,8 @@
     position: absolute;
     right: 0;
     margin: 15px 10px;
+    z-index: 999;
+    top:10px;
     cursor: pointer; }
   
   .ajax-cart__cart-title {
@@ -13465,4 +13467,9 @@
 
 .remove-close {
   display: none;
+}
+
+.comment-box textarea{
+  width: 100%;
+  min-height: 125px;
 }

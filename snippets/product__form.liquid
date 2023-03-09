@@ -233,7 +233,7 @@
           {% endif %}
 
           {% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
-          <button type="submit" name="add" class="button {% if settings.cart_action == 'mini_cart' or settings.cart_action == 'drawer' %} ajax-submit {% endif %}action_button button--add-to-cart {% if show_payment_button %} action_button--secondary {% endif %}" data-label={{ add_to_cart_label | json }} data-add-to-cart-trigger>
+          <button type="submit" name="add" class="button {% if settings.cart_action == 'mini_cart' or settings.cart_action == 'drawer' %} ajax-submit {% endif %}action_button button--add-to-cart {% if show_payment_button %} action_button--secondary {% endif %} {% if template.suffix == 'customizable' %}customizable-atc{% endif %}" data-label={{ add_to_cart_label | json }} data-add-to-cart-trigger>
             {% if  settings.button_cart_icon != blank and settings.button_cart_icon_position == 'left' %}
               {%
                 render 'icon',
@@ -242,6 +242,9 @@
               %}
             {% endif %}
             <span class="text">{{ add_to_cart_label }}</span>
+            {% if template.suffix == 'customizable' %}
+              <p class="additional-price"></p>
+            {% endif %}
             {% if  settings.button_cart_icon != blank and settings.button_cart_icon_position == 'right' %}
               {%
                 render 'icon',

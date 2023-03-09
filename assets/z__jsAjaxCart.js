@@ -2,9 +2,6 @@
 var __webpack_exports__ = {};
 window.PXUTheme.jsAjaxCart = {
   init: function ($section) {
-
-    var has_parent_product = false;
-
     // Add settings from schema to current object
     window.PXUTheme.jsAjaxCart = $.extend(this, window.PXUTheme.getSectionData($section));
 
@@ -39,14 +36,67 @@ window.PXUTheme.jsAjaxCart = {
 
     $(document).on('click', '[data-ajax-cart-delete]', function (e) {
       e.preventDefault();
-      const lineID = $(this).parents('[data-line-item]').data('line-item');
-      window.PXUTheme.jsAjaxCart.removeFromCart(lineID);
+      var lineID = $(this).parents('[data-line-item]').data('line-item');
+      console.log(lineID);
+      shouldRemoveLineID = lineID;
+      var remove_need_products_array = [];
+      $.ajax({
+        dataType: "json",
+        async: false,
+        cache: false,
+        url: "/cart",
+        success: function (response) {
+          console.log(response);
+          response.items.forEach((item, index) => {
+            // console.log(item.properties._io_order_group);
+            if ( item.properties ){ //if customizable product
+              console.log(item.properties);
+              if (item.properties._io_order_group && (index+1) == lineID){ // if main customizable product
+                shouldRemoveLineID = item.properties._io_order_group;
+                remove_amount = 1;
+                remove_need_products_array.push(item.variant_id);
+              }
+              if ( shouldRemoveLineID == item.properties._io_parent_order_group ){
+                remove_amount = remove_amount + 1;
+                remove_need_products_array.push(item.variant_id);
+              }
+            }
+          })
+          // console.log(remove_amount, remove_need_products_array);
+          if ( remove_need_products_array.length > 0 ){
+            for ( i = 0; i < remove_need_products_array.length; i++ ){          
+              if (i==0){
+                data_for_update_js = "updates[" + remove_need_products_array[i] + "]=" + 0;
+              }else{
+                data_for_update_js = data_for_update_js + "&" + "updates[" + remove_need_products_array[i] + "]=" + 0;
+              }          
+            }
+            // console.log(data_for_update_js);
+            $.ajax({
+              type: 'POST',
+              url: '/cart/update.js',
+              data: data_for_update_js,
+              dataType: 'json',
+              success: function (cart) {
+                window.PXUTheme.jsAjaxCart.updateView();
+              },
+              error: function (XMLHttpRequest, textStatus) {
+                var response = eval('(' + XMLHttpRequest.responseText + ')');
+                response = response.description;      
+              }
+            });
+          }else{
+            window.PXUTheme.jsAjaxCart.removeFromCart(lineID);
 
-      if (window.PXUTheme.jsCart) {
-        window.PXUTheme.jsCart.removeFromCart(lineID);
-      }
+            if (window.PXUTheme.jsCart) {
+              window.PXUTheme.jsCart.removeFromCart(lineID);
+            }
 
-      return false;
+            return false;
+          }          
+        }
+      });
+      
     });
 
     $(document).on('click', '[data-ajax-cart-close]', function (e) {
@@ -105,7 +155,7 @@ window.PXUTheme.jsAjaxCart = {
     this.ajaxCartDrawer.removeClass('is-visible');
     $('.ajax-cart__overlay').removeClass('is-visible');
   },
-  removeFromCart: function (lineID, callback) {
+  removeFromCart: function (lineID, callback) {    
     $.ajax({
       type: 'POST',
       url: '/cart/change.js',
@@ -119,7 +169,7 @@ window.PXUTheme.jsAjaxCart = {
         response = response.description;
 
       }
-    });
+    });    
   },
   initializeAjaxCart: function () {
 
@@ -241,6 +291,85 @@ window.PXUTheme.jsAjaxCart = {
 
           }, 1000);
 
+          var group_number;
+          var should_be_changed_quantity;
+          var main_product_id, data_for_update_js, upcharge_group_parent_number;
+          var update_need_products_array = [];
+          var main_product_array=[];
+          var upcharge_product_array=[];
+          fetch('/cart.js')        
+          .then((response) => {
+            return response.json();
+          })
+          .then((response) => {
+            response.items.forEach((item) => {          
+              //getting main product id and composition count
+              if (item.properties){
+                if (item.properties._io_order_group){
+                  // main_product_object.id = item.variant_id;
+                  group_number = item.properties._io_order_group;
+                  if ( item["properties"]["Composition for RH"] ){
+                    should_be_changed_quantity = item["properties"]["Composition for RH"].split(",").length;
+                  }else if( item["properties"]["Composition for LH"] ){
+                    should_be_changed_quantity = item["properties"]["Composition for LH"].split(",").length;
+                  }else{
+                    should_be_changed_quantity = 1;
+                  }
+                  // main_product_object.quantity = should_be_changed_quantity;
+                  main_product_id = parseInt(item.variant_id); //main product id
+                  if ( update_need_products_array.includes(main_product_id) == false ){
+                    update_need_products_array.push(main_product_id); //adding main product id to the array list
+                  }
+                  var main_product_update_data = "updates[" + main_product_id + "]=" + should_be_changed_quantity;
+                  main_product_array.push(main_product_update_data);
+                  // console.log("updated quantities is " + should_be_changed_quantity + "main id is "+ update_need_products_array);
+                }
+              }  
+              // console.log("main product array is " + main_product_array);
+              //end getting main product id and composition count
+              
+              //getting upcharge product id and pushing it to the array
+              if (item.properties){
+                if (item.properties._io_parent_order_group){
+                  // if ( upcharge_product_array.includes(item.variant_id) == false ){
+                  //   upcharge_product_array.push(item.variant_id);
+                  // }
+                  let upcharge_product_id = parseInt(item.variant_id);
+                  upcharge_group_parent_number = item.properties._io_parent_order_group;
+                  if ( upcharge_group_parent_number == group_number && update_need_products_array.includes(upcharge_product_id) == false ){
+                    update_need_products_array.push(upcharge_product_id);
+                  }
+                  var upcharge_product_update_data = "updates[" + upcharge_product_id + "]=" + should_be_changed_quantity;
+                  upcharge_product_array.push(upcharge_product_update_data);
+                }
+              }
+              //end getting upcharge product id and pushing it to the array              
+            });
+            // console.log("upcharge product array is " + upcharge_product_array);
+            setTimeout(function(){
+              var final_array = main_product_array.concat(upcharge_product_array);
+              var data_for_update_js = final_array.join('&');
+              console.log(data_for_update_js);
+              $.ajax({
+                type: 'POST',
+                url: '/cart/update.js',
+                data: data_for_update_js,
+                dataType: 'json',
+                success: function (cart) {
+                  window.PXUTheme.jsAjaxCart.updateView();
+                },
+                error: function (XMLHttpRequest, textStatus) {
+                  var response = eval('(' + XMLHttpRequest.responseText + ')');
+                  response = response.description;      
+                }
+              });
+            }, 1000)
+            return false;     
+          })
+          .catch((e) => {
+            console.error(e);
+          });
+
           window.PXUTheme.jsAjaxCart.showDrawer();
           window.PXUTheme.jsAjaxCart.updateView();
 
@@ -254,7 +383,7 @@ window.PXUTheme.jsAjaxCart = {
               success: function (html) {
                 const cartForm = $(html).find('.cart__form');
                 $('.cart__form').replaceWith(cartForm);
-
+                
               }
             });
           }

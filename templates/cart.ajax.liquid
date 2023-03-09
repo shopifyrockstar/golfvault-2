@@ -31,7 +31,7 @@
       </span>
     </p>
 
-    <div
+    {% comment %} <div
       class="ajax-cart__close-icon"
       data-ajax-cart-close
     >
@@ -39,7 +39,7 @@
         render 'icon',
         name: 'x',
       %}
-    </div>
+    </div> {% endcomment %}
   </div>
 
   {% assign this_is_upcharge_product = false %}
@@ -58,7 +58,7 @@
 
         <div class="ajax-cart__product media" data-cart-item="{{ item.key }}" data-line-item="{{ forloop.index }}">
           {% comment %} Image {% endcomment %}
-          <figure class="ajax-cart__product-image media-left asdf">
+          <figure class="ajax-cart__product-image media-left">
             {% if item.product.media %}
               {% if item.product.featured_media.preview_image %}
                 <a href="{{ item.url }}">
@@ -187,6 +187,7 @@
               </button>
             </a>
           </div>
+          {% assign this_is_upcharge_product = false %}
         </div>
       {% endfor %}
     </div>
